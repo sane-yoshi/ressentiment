@@ -7,10 +7,11 @@
 
   <style>
     :root {
+      --bg: #f3f0e6;
       --mint: #a8cdbd;
-      --deep-green: #243b36;
+      --green: #243b36;
       --blue: #58798a;
-      --cream: #f3f0e6;
+      --line: #b8c8bd;
     }
 
     * {
@@ -19,116 +20,194 @@
 
     body {
       margin: 0;
-      background: var(--cream);
-      color: var(--deep-green);
-      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--green);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
       line-height: 1.8;
     }
 
-    header {
-      min-height: 75vh;
-      background: var(--mint);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    h1 {
+    a:hover {
+      opacity: 0.55;
+    }
+
+    /* ---------- header ---------- */
+
+    header {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 55px 25px 35px;
+    }
+
+    .site-title {
+      display: inline-block;
+    }
+
+    .site-title h1 {
       margin: 0;
-      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3rem;
       font-weight: normal;
       letter-spacing: 0.04em;
     }
 
-    .name {
-      margin-top: 10px;
+    .site-title p {
+      margin: 2px 0 0;
       color: var(--blue);
-      font-size: 1rem;
+      font-size: 0.75rem;
       letter-spacing: 0.25em;
     }
 
     nav {
-      margin-top: 60px;
+      margin-top: 35px;
       display: flex;
-      gap: 28px;
+      gap: 30px;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     nav a {
-      color: var(--deep-green);
-      text-decoration: none;
-      font-size: 0.85rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.9rem;
       letter-spacing: 0.12em;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    /* ---------- main ---------- */
 
     main {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 100px 24px;
+      padding: 20px 25px 100px;
     }
 
-    .intro {
-      margin-bottom: 100px;
-      max-width: 550px;
+    section {
+      margin-bottom: 85px;
     }
 
-    .label {
-      color: var(--blue);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      font-size: 2rem;
-      font-weight: normal;
-      margin: 8px 0 25px;
-    }
-
-    .works {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .work {
-      aspect-ratio: 1 / 1;
-      background: var(--mint);
+    .section-title {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--blue);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
+      align-items: baseline;
+      gap: 15px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
     }
 
-    footer {
-      padding: 50px 24px;
-      text-align: center;
+    .section-title h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.45rem;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title span {
       color: var(--blue);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 0.12em;
     }
+
+    /* ---------- update ---------- */
+
+    .updates {
+      max-width: 700px;
+    }
+
+    .update {
+      display: grid;
+      grid-template-columns: 110px 90px 1fr;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px dotted var(--line);
+      font-size: 0.85rem;
+    }
+
+    .update .date {
+      color: var(--blue);
+    }
+
+    .update .category {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: 0.08em;
+    }
+
+    /* ---------- about ---------- */
+
+    .about {
+      max-width: 620px;
+      font-size: 0.9rem;
+    }
+
+    .about-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    /* ---------- links ---------- */
+
+    .quick-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quick-links a {
+      display: inline-block;
+      background: var(--mint);
+      padding: 12px 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ---------- footer ---------- */
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 25px 55px;
+      border-top: 1px solid var(--line);
+      color: var(--blue);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+    }
+
+    /* ---------- mobile ---------- */
 
     @media (max-width: 600px) {
       header {
-        min-height: 80vh;
+        padding-top: 35px;
+      }
+
+      .site-title h1 {
+        font-size: 2.4rem;
       }
 
       nav {
         gap: 18px;
       }
 
-      .works {
-        grid-template-columns: 1fr;
+      .update {
+        grid-template-columns: 85px 70px 1fr;
+        gap: 7px;
+        font-size: 0.78rem;
+      }
+
+      main {
+        padding-bottom: 60px;
+      }
+
+      section {
+        margin-bottom: 65px;
       }
     }
   </style>
@@ -137,41 +216,98 @@
 <body>
 
   <header>
-    <h1>ressentiment</h1>
-    <div class="name">saneyoshi</div>
+    <a href="index.html" class="site-title">
+      <h1>ressentiment</h1>
+      <p>saneyoshi</p>
+    </a>
 
     <nav>
-      <a href="#">ILLUSTRATION</a>
-      <a href="#">COMIC</a>
-      <a href="#">DIARY</a>
-      <a href="#">ABOUT</a>
-      <a href="#">LINK</a>
+      <a href="illust.html">ILLUST</a>
+      <a href="novel.html">NOVEL</a>
+      <a href="blog.html">BLOG</a>
+      <a href="circle.html">CIRCLE</a>
     </nav>
   </header>
 
+
   <main>
 
-    <section class="intro">
-      <div class="label">welcome</div>
-      <h2>ressentiment</h2>
-      <p>
-        illustration, comic and things by saneyoshi.
-      </p>
-    </section>
+    <!-- UPDATE -->
 
     <section>
-      <div class="label">recent works</div>
-      <h2>works</h2>
+      <div class="section-title">
+        <h2>Update</h2>
+        <span>更新履歴</span>
+      </div>
 
-      <div class="works">
-        <div class="work">WORK 01</div>
-        <div class="work">WORK 02</div>
-        <div class="work">WORK 03</div>
-        <div class="work">WORK 04</div>
+      <div class="updates">
+
+        <div class="update">
+          <span class="date">2026.09.14</span>
+          <span class="category">SITE</span>
+          <a href="#">サイト開設</a>
+        </div>
+
+        <div class="update">
+          <span class="date">2026.09.14</span>
+          <span class="category">ILLUST</span>
+          <a href="illust.html">イラストを追加しました</a>
+        </div>
+
+        <div class="update">
+          <span class="date">2026.09.14</span>
+          <span class="category">CIRCLE</span>
+          <a href="circle.html">同人活動情報</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section>
+      <div class="section-title">
+        <h2>About</h2>
+        <span>このサイトについて</span>
+      </div>
+
+      <div class="about">
+        <div class="about-name">さねよし</div>
+
+        <p>
+          illustration / novel / comic
+        </p>
+
+        <p>
+          イラストや小説、同人活動の記録を置いています。
+        </p>
+
+        <p>
+          Disney / Goofy &amp; Max
+        </p>
+      </div>
+    </section>
+
+
+    <!-- CONTENTS -->
+
+    <section>
+      <div class="section-title">
+        <h2>Contents</h2>
+        <span>コンテンツ</span>
+      </div>
+
+      <div class="quick-links">
+        <a href="illust.html">ILLUST</a>
+        <a href="novel.html">NOVEL</a>
+        <a href="blog.html">BLOG</a>
+        <a href="circle.html">CIRCLE</a>
       </div>
     </section>
 
   </main>
+
 
   <footer>
     © saneyoshi / ressentiment
