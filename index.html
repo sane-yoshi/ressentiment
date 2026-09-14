@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ressentiment | saneyoshi</title>
+
+  <style>
+    :root {
+      --mint: #a8cdbd;
+      --deep-green: #243b36;
+      --blue: #58798a;
+      --cream: #f3f0e6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--deep-green);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.8;
+    }
+
+    header {
+      min-height: 75vh;
+      background: var(--mint);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3.5rem, 12vw, 8rem);
+      font-weight: normal;
+      letter-spacing: 0.04em;
+    }
+
+    .name {
+      margin-top: 10px;
+      color: var(--blue);
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+    }
+
+    nav {
+      margin-top: 60px;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--deep-green);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .intro {
+      margin-bottom: 100px;
+      max-width: 550px;
+    }
+
+    .label {
+      color: var(--blue);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: normal;
+      margin: 8px 0 25px;
+    }
+
+    .works {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .work {
+      aspect-ratio: 1 / 1;
+      background: var(--mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer {
+      padding: 50px 24px;
+      text-align: center;
+      color: var(--blue);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        min-height: 80vh;
+      }
+
+      nav {
+        gap: 18px;
+      }
+
+      .works {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>ressentiment</h1>
+    <div class="name">saneyoshi</div>
+
+    <nav>
+      <a href="#">ILLUSTRATION</a>
+      <a href="#">COMIC</a>
+      <a href="#">DIARY</a>
+      <a href="#">ABOUT</a>
+      <a href="#">LINK</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="intro">
+      <div class="label">welcome</div>
+      <h2>ressentiment</h2>
+      <p>
+        illustration, comic and things by saneyoshi.
+      </p>
+    </section>
+
+    <section>
+      <div class="label">recent works</div>
+      <h2>works</h2>
+
+      <div class="works">
+        <div class="work">WORK 01</div>
+        <div class="work">WORK 02</div>
+        <div class="work">WORK 03</div>
+        <div class="work">WORK 04</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © saneyoshi / ressentiment
+  </footer>
+
+</body>
+</html>
