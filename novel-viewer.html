@@ -765,10 +765,15 @@
         pages.length - 1;
 
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+      const bodyTop =
+      novelBody.getBoundingClientRect().top +
+      window.scrollY -
+      10;
+
+　　　　window.scrollTo({
+      top: bodyTop,
+      behavior: "smooth"
+　　　　});
 
     }
 
