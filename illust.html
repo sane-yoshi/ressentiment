@@ -181,6 +181,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
+      overflow: hidden;
     }
 
     .work {
@@ -189,21 +190,18 @@
     }
 
     .work-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 
-      /*
-        ここがサムネイルの切り抜き設定。
-        center center = 真ん中
-      */
-      object-fit: cover;
-      object-position: center center;
+  /* 作品ごとに変更できる */
+  object-position: var(--x, 50%) var(--y, 50%);
+  transform: scale(var(--zoom, 1));
 
-      display: block;
-      background: #e8e5db;
-
-      transition: opacity 0.2s ease;
-    }
+  display: block;
+  background: #e8e5db;
+  transition: opacity 0.2s ease;
+}
 
     .work:hover .work-image {
       opacity: 0.75;
@@ -399,11 +397,11 @@
       <figure class="work" data-category="goofy-max">
 
         <img
-          src="images/illust01.JPG"
-          alt=""
-          class="work-image"
-          style="object-position: center center;"
-        >
+         src="images/illust01.JPG"
+         alt=""
+         class="work-image"
+         style="--zoom: 2; --x: 60%; --y: 30%;"
+>
 
         <figcaption>title</figcaption>
 
