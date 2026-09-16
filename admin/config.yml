@@ -30,10 +30,8 @@ collections:
         widget: select
         options:
           - 日記
-          - 同人
-          - ディズニー
-          - お知らせ
-          - その他
+          - 進捗
+          - インパ
 
       - label: 本文
         name: body
