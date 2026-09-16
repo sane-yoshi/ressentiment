@@ -723,18 +723,19 @@
 
       }
 
-      catch (error) {
+          catch (error) {
 
-        blogList.innerHTML =
-          `
-          <div class="error">
-            記事を読み込めませんでした。
-          </div>
-          `;
+      blogList.innerHTML =
+        `
+        <div class="error">
+          記事を読み込めませんでした。<br><br>
+          ${error.message}
+        </div>
+        `;
 
-        console.error(error);
+      console.error(error);
 
-      }
+    }
 
     }
 
