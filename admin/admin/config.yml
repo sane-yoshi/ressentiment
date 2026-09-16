@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: sane-yoshi/ressentiment
+
+media_folder: /blog-images
+public_folder: /blog-images
+
+collections:
+
+  - name: blog
+    label: BLOG
+    label_singular: 記事
+    folder: /blogs
+    create: true
+    fields:
+
+      - label: タイトル
+        name: title
+        widget: string
+
+      - label: 日付
+        name: date
+        widget: datetime
+        type: date
+
+      - label: カテゴリ
+        name: category
+        widget: select
+        options:
+          - 日記
+          - 同人
+          - ディズニー
+          - お知らせ
+          - その他
+
+      - label: 本文
+        name: body
+        widget: richtext
