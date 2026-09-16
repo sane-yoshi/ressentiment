@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>BLOG | ressentiment</title>
+
+
+  <style>
+
+    :root {
+      --bg: #f3f0e6;
+      --mint: #a8cdbd;
+      --green: #243b36;
+      --blue: #456A72;
+      --line: #b8c8bd;
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      background: var(--bg);
+
+      color: var(--green);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+
+      line-height: 1.8;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    a:hover {
+      opacity: 0.6;
+    }
+
+
+    /* ---------- header ---------- */
+
+
+    header {
+      background-color: var(--mint);
+
+      background-image:
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(243, 240, 230, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(243, 240, 230, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 20%,
+          rgba(243, 240, 230, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+
+      padding: 65px 25px 45px;
+
+      text-align: center;
+    }
+
+
+    .site-title {
+      display: inline-block;
+    }
+
+
+    .site-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+      font-weight: normal;
+
+      letter-spacing: 0.04em;
+
+      color: #456A72;
+    }
+
+
+    nav {
+      margin-top: 35px;
+
+      display: flex;
+
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+    }
+
+
+    nav a {
+      color: #456A72;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- main ---------- */
+
+
+    main {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding: 70px 25px 100px;
+
+      background-image:
+        radial-gradient(
+          circle at 12% 18%,
+          rgba(168, 205, 189, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 86% 72%,
+          rgba(168, 205, 189, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 35%,
+          rgba(168, 205, 189, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+    }
+
+
+    /* ---------- article ---------- */
+
+
+    .article {
+      max-width: 760px;
+
+      margin: 0 auto;
+    }
+
+
+    .article-header {
+      padding-bottom: 30px;
+
+      border-bottom:
+        1px dotted var(--line);
+
+      margin-bottom: 40px;
+    }
+
+
+    .article-date {
+      color: var(--blue);
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 5px;
+    }
+
+
+    .article-category {
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 8px;
+    }
+
+
+    .article-title {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 2rem;
+
+      font-weight: normal;
+
+      color: var(--green);
+    }
+
+
+    .article-body {
+      font-size: 0.95rem;
+
+      line-height: 2;
+
+      word-break: break-word;
+    }
+
+
+    .article-body p {
+      margin:
+        0 0 1.5em;
+    }
+
+
+    .article-body img {
+      display: block;
+
+      max-width: 100%;
+
+      height: auto;
+
+      margin:
+        25px auto;
+
+      border:
+        1px solid var(--line);
+    }
+
+
+    .article-body a {
+      color: var(--blue);
+
+      text-decoration:
+        underline;
+    }
+
+
+    .article-body ul,
+    .article-body ol {
+      margin-bottom: 1.5em;
+
+      padding-left: 1.5em;
+    }
+
+
+    .article-body blockquote {
+      margin:
+        1.5em 0;
+
+      padding:
+        5px 20px;
+
+      border-left:
+        2px solid var(--line);
+
+      color: var(--blue);
+    }
+
+
+    .back {
+      margin-top: 60px;
+
+      padding-top: 25px;
+
+      border-top:
+        1px dotted var(--line);
+
+      text-align: center;
+    }
+
+
+    .back a {
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.8rem;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .loading,
+    .error {
+      text-align: center;
+
+      color: var(--blue);
+
+      padding: 50px 0;
+    }
+
+
+    /* ---------- footer ---------- */
+
+
+    footer {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding:
+        30px 25px 55px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--blue);
+
+      font-size: 0.7rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- mobile ---------- */
+
+
+    @media (max-width: 600px) {
+
+      header {
+        padding-top: 35px;
+      }
+
+
+      .site-title h1 {
+        font-size: 2.4rem;
+      }
+
+
+      nav {
+        gap: 18px;
+      }
+
+
+      main {
+        padding-top: 50px;
+
+        padding-bottom: 60px;
+      }
+
+
+      .article-title {
+        font-size: 1.6rem;
+      }
+
+
+      .article-body {
+        font-size: 0.9rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <a
+      href="index.html"
+      class="site-title"
+    >
+
+      <h1>ressentiment</h1>
+
+    </a>
+
+
+    <nav>
+
+      <a href="illust.html">
+        ILLUST
+      </a>
+
+      <a href="novel.html">
+        NOVEL
+      </a>
+
+      <a href="blog.html">
+        BLOG
+      </a>
+
+      <a href="circle.html">
+        CIRCLE
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+
+    <article
+      class="article"
+      id="article"
+    >
+
+      <div class="loading">
+        読み込み中……
+      </div>
+
+    </article>
+
+
+  </main>
+
+
+  <footer>
+
+    © saneyoshi / ressentiment
+
+  </footer>
+
+
+  <script>
+
+
+    const article =
+      document.getElementById(
+        "article"
+      );
+
+
+    /* ---------- URLからファイル名取得 ---------- */
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const fileName =
+      params.get("file");
+
+
+    if (!fileName) {
+
+      article.innerHTML =
+        `
+        <div class="error">
+          記事が指定されていません。
+        </div>
+        `;
+
+    }
+
+
+    /* ---------- Markdown ---------- */
+
+
+    function escapeHtml(
+      text
+    ) {
+
+      return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    function parseFrontMatter(
+      text
+    ) {
+
+      const match =
+        text.match(
+          /^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/
+        );
+
+
+      if (!match) {
+
+        return {
+
+          title: "無題",
+
+          date: "",
+
+          category: "その他",
+
+          body: text
+
+        };
+
+      }
+
+
+      const frontMatter =
+        match[1];
+
+
+      const body =
+        match[2];
+
+
+      const data = {};
+
+
+      frontMatter
+        .split("\n")
+        .forEach(line => {
+
+          const index =
+            line.indexOf(":");
+
+
+          if (index === -1) {
+            return;
+          }
+
+
+          const key =
+            line
+              .slice(0, index)
+              .trim();
+
+
+          const value =
+            line
+              .slice(index + 1)
+              .trim();
+
+
+          data[key] =
+            value;
+
+        });
+
+
+      return {
+
+        title:
+          data.title || "無題",
+
+        date:
+          data.date || "",
+
+        category:
+          data.category || "その他",
+
+        body
+
+      };
+
+    }
+
+
+    /* ---------- MarkdownをHTMLへ ---------- */
+
+
+    function markdownToHtml(
+      markdown
+    ) {
+
+      const lines =
+        markdown
+          .trim()
+          .split("\n");
+
+
+      let html = "";
+
+      let paragraph = [];
+
+
+      function flushParagraph() {
+
+        if (
+          paragraph.length === 0
+        ) {
+          return;
+        }
+
+
+        const text =
+          paragraph.join("\n");
+
+
+        html +=
+          "<p>" +
+          inlineMarkdown(text) +
+          "</p>";
+
+
+        paragraph = [];
+
+      }
+
+
+      lines.forEach(line => {
+
+        if (
+          line.trim() === ""
+        ) {
+
+          flushParagraph();
+
+          return;
+
+        }
+
+
+        /* 見出し */
+
+
+        if (
+          line.startsWith("# ")
+        ) {
+
+          flushParagraph();
+
+          html +=
+            "<h2>" +
+            escapeHtml(
+              line.slice(2)
+            ) +
+            "</h2>";
+
+          return;
+
+        }
+
+
+        if (
+          line.startsWith("## ")
+        ) {
+
+          flushParagraph();
+
+          html +=
+            "<h3>" +
+            escapeHtml(
+              line.slice(3)
+            ) +
+            "</h3>";
+
+          return;
+
+        }
+
+
+        /* 引用 */
+
+
+        if (
+          line.startsWith("> ")
+        ) {
+
+          flushParagraph();
+
+          html +=
+            "<blockquote>" +
+            inlineMarkdown(
+              line.slice(2)
+            ) +
+            "</blockquote>";
+
+          return;
+
+        }
+
+
+        paragraph.push(
+          line
+        );
+
+      });
+
+
+      flushParagraph();
+
+
+      return html;
+
+    }
+
+
+    function inlineMarkdown(
+      text
+    ) {
+
+      let result =
+        escapeHtml(text);
+
+
+      /* 画像 */
+
+
+      result =
+        result.replace(
+          /!\[([^\]]*)\]\(([^)]+)\)/g,
+
+          (match, alt, src) => {
+
+            let imageSrc =
+              src;
+
+
+            if (
+              imageSrc.startsWith(
+                "/ressentiment/"
+              )
+            ) {
+
+              imageSrc =
+                imageSrc;
+
+            }
+
+
+            return (
+              '<img src="' +
+              imageSrc +
+              '" alt="' +
+              alt +
+              '">'
+            );
+
+          }
+
+        );
+
+
+      /* リンク */
+
+
+      result =
+        result.replace(
+          /\[([^\]]+)\]\(([^)]+)\)/g,
+
+          '<a href="$2">$1</a>'
+        );
+
+
+      /* 太字 */
+
+
+      result =
+        result.replace(
+          /\*\*(.+?)\*\*/g,
+          "<strong>$1</strong>"
+        );
+
+
+      return result;
+
+    }
+
+
+    /* ---------- 記事取得 ---------- */
+
+
+    async function loadArticle() {
+
+      try {
+
+        const apiUrl =
+          "https://api.github.com/repos/sane-yoshi/ressentiment/contents/blogs/" +
+          encodeURIComponent(
+            fileName
+          );
+
+
+        const response =
+          await fetch(
+            apiUrl
+          );
+
+
+        if (!response.ok) {
+          throw new Error();
+        }
+
+
+        const file =
+          await response.json();
+
+
+        const markdownResponse =
+          await fetch(
+            file.download_url
+          );
+
+
+        const markdown =
+          await markdownResponse.text();
+
+
+        const data =
+          parseFrontMatter(
+            markdown
+          );
+
+
+        document.title =
+          data.title +
+          " | BLOG | ressentiment";
+
+
+        article.innerHTML =
+          `
+
+          <header class="article-header">
+
+            <div class="article-date">
+              ${formatDate(data.date)}
+            </div>
+
+            <div class="article-category">
+              ${escapeHtml(data.category)}
+            </div>
+
+            <h2 class="article-title">
+              ${escapeHtml(data.title)}
+            </h2>
+
+          </header>
+
+
+          <div class="article-body">
+
+            ${markdownToHtml(data.body)}
+
+          </div>
+
+
+          <div class="back">
+
+            <a href="blog.html">
+              ← BLOGへ戻る
+            </a>
+
+          </div>
+
+          `;
+
+      }
+
+      catch (error) {
+
+        article.innerHTML =
+          `
+          <div class="error">
+            記事を読み込めませんでした。
+          </div>
+          `;
+
+        console.error(error);
+
+      }
+
+    }
+
+
+    function formatDate(
+      date
+    ) {
+
+      if (!date) {
+        return "";
+      }
+
+
+      return date
+        .replaceAll("-", ".");
+
+    }
+
+
+    if (fileName) {
+
+      loadArticle();
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
