@@ -736,9 +736,50 @@
     }
 
 
-    function inlineMarkdown(
-      text
-    ) {
+function inlineMarkdown(text) {
+
+  let result = escapeHtml(text);
+
+
+  /* 画像 */
+
+  result = result.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+
+    (match, alt, src) => {
+
+      return (
+        '<img src="' +
+        src +
+        '" alt="' +
+        alt +
+        '">'
+      );
+
+    }
+  );
+
+
+  /* リンク */
+
+  result = result.replace(
+    /\[([^\]]+)\]\(([^)]+)\)/g,
+
+    '<a href="$2">$1</a>'
+  );
+
+
+  /* 太字 */
+
+  result = result.replace(
+    /\*\*(.+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
+
+
+  return result;
+
+}
 
       let result =
         escapeHtml(text);
