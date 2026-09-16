@@ -1,11 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+
+  <!-- ==================================================
+       更新履歴
+       ★ 更新するときは、ここだけ編集すればOK ★
+
+       新しい更新は一番上に追加してください。
+
+       例：
+
+       {
+         date: "2026.09.20",
+         category: "ILLUST",
+         text: "イラスト追加",
+         link: "illust.html"
+       }
+
+       category は SITE / ILLUST / NOVEL / BLOG / CIRCLE
+       など、好きな名前でOKです。
+
+       link はリンク先。
+       リンクを付けない場合は "#"
+
+       ================================================== -->
+
+  <script>
+
+    const updates = [
+
+      {
+        date: "2026.09.14",
+        category: "SITE",
+        text: "サイト開設",
+        link: "#"
+      }
+
+
+      /* ---------- 更新を追加する場所 ----------
+
+      上の } の後ろに「,」を付けて、
+
+      {
+        date: "2026.09.20",
+        category: "ILLUST",
+        text: "イラスト追加",
+        link: "illust.html"
+      }
+
+      のように追加してください。
+
+      ------------------------------------------ */
+
+    ];
+
+
+  </script>
+
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>ressentiment | saneyoshi</title>
 
+
   <style>
+
     :root {
       --bg: #f3f0e6;
       --mint: #a8cdbd;
@@ -14,283 +79,522 @@
       --line: #b8c8bd;
     }
 
+
     * {
       box-sizing: border-box;
     }
 
+
     body {
       margin: 0;
+
       background: var(--bg);
+
       color: var(--green);
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Hiragino Kaku Gothic ProN",
         "Yu Gothic",
         sans-serif;
+
       line-height: 1.8;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
+
     a:hover {
       opacity: 0.55;
     }
 
+
     /* ---------- header ---------- */
 
-header {
-  background-color: var(--mint);
-  background-image:
-    radial-gradient(circle at 15% 25%, rgba(243, 240, 230, 0.45) 0 2px, transparent 3px),
-    radial-gradient(circle at 80% 70%, rgba(243, 240, 230, 0.35) 0 3px, transparent 4px),
-    radial-gradient(circle at 65% 20%, rgba(243, 240, 230, 0.3) 0 1px, transparent 2px);
-  background-size: 180px 180px, 240px 240px, 130px 130px;
 
-  padding: 65px 25px 45px;
-  text-align: center;
-}
+    header {
+      background-color: var(--mint);
+
+      background-image:
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(243, 240, 230, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(243, 240, 230, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 20%,
+          rgba(243, 240, 230, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+
+      padding: 65px 25px 45px;
+
+      text-align: center;
+    }
+
 
     .site-title {
       display: inline-block;
     }
 
-.site-title h1 {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  font-weight: normal;
-  letter-spacing: 0.04em;
-  color: #456A72;
-}
+
+    .site-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+      font-weight: normal;
+
+      letter-spacing: 0.04em;
+
+      color: #456A72;
+    }
+
 
     .site-title p {
       margin: 2px 0 0;
+
       color: var(--blue);
+
       font-size: 0.75rem;
+
       letter-spacing: 0.25em;
     }
 
+
     nav {
       margin-top: 35px;
+
       display: flex;
+
       gap: 30px;
+
       flex-wrap: wrap;
+
       justify-content: center;
     }
 
+
     nav a {
       color: #456A72;
-      font-family: Georgia, "Times New Roman", serif;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 0.9rem;
+
       letter-spacing: 0.12em;
     }
 
+
     /* ---------- main ---------- */
 
-    main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px 25px 100px;
 
-  background-image:
-    radial-gradient(circle at 12% 18%, rgba(168, 205, 189, 0.45) 0 2px, transparent 3px),
-    radial-gradient(circle at 86% 72%, rgba(168, 205, 189, 0.35) 0 3px, transparent 4px),
-    radial-gradient(circle at 65% 35%, rgba(168, 205, 189, 0.3) 0 1px, transparent 2px);
-  background-size: 180px 180px, 240px 240px, 130px 130px;
-}
+    main {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding: 20px 25px 100px;
+
+      background-image:
+        radial-gradient(
+          circle at 12% 18%,
+          rgba(168, 205, 189, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 86% 72%,
+          rgba(168, 205, 189, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 35%,
+          rgba(168, 205, 189, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+    }
+
 
     section {
       margin-bottom: 85px;
     }
 
+
     .section-title {
       display: flex;
+
       align-items: baseline;
+
       gap: 15px;
+
       margin-bottom: 22px;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
       padding-bottom: 8px;
     }
 
+
     .section-title h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 1.45rem;
+
       font-weight: normal;
+
       letter-spacing: 0.05em;
     }
 
+
     .section-title span {
       color: var(--blue);
+
       font-size: 0.7rem;
+
       letter-spacing: 0.12em;
     }
 
+
     /* ---------- update ---------- */
+
 
     .updates {
       max-width: 700px;
     }
 
+
     .update {
       display: grid;
-      grid-template-columns: 110px 90px 1fr;
+
+      grid-template-columns:
+        110px 90px 1fr;
+
       gap: 12px;
+
       padding: 9px 0;
-      border-bottom: 1px dotted var(--line);
+
+      border-bottom:
+        1px dotted var(--line);
+
       font-size: 0.85rem;
     }
+
 
     .update .date {
       color: var(--blue);
     }
 
+
     .update .category {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       letter-spacing: 0.08em;
     }
+
 
     /* ---------- about ---------- */
 
+
     .about {
       max-width: 620px;
+
       font-size: 0.9rem;
     }
 
+
     .about-name {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 1.5rem;
+
       margin-bottom: 10px;
     }
 
-    /* ---------- links ---------- */
-
-    .quick-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .quick-links a {
-      display: inline-block;
-      background: var(--mint);
-      padding: 12px 20px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-    }
 
     /* ---------- footer ---------- */
 
+
     footer {
       max-width: 960px;
+
       margin: 0 auto;
-      padding: 30px 25px 55px;
-      border-top: 1px solid var(--line);
+
+      padding:
+        30px 25px 55px;
+
+      border-top:
+        1px solid var(--line);
+
       color: var(--blue);
+
       font-size: 0.7rem;
+
       letter-spacing: 0.12em;
     }
 
+
     /* ---------- mobile ---------- */
 
+
     @media (max-width: 600px) {
+
       header {
         padding-top: 35px;
       }
+
 
       .site-title h1 {
         font-size: 2.4rem;
       }
 
+
       nav {
         gap: 18px;
       }
 
+
       .update {
-        grid-template-columns: 85px 70px 1fr;
+        grid-template-columns:
+          85px 70px 1fr;
+
         gap: 7px;
+
         font-size: 0.78rem;
       }
+
 
       main {
         padding-bottom: 60px;
       }
 
+
       section {
         margin-bottom: 65px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
   <header>
-    <a href="index.html" class="site-title">
+
+    <a
+      href="index.html"
+      class="site-title"
+    >
+
       <h1>ressentiment</h1>
+
     </a>
 
+
     <nav>
-      <a href="illust.html">ILLUST</a>
-      <a href="novel.html">NOVEL</a>
-      <a href="blog.html">BLOG</a>
-      <a href="circle.html">CIRCLE</a>
+
+      <a href="illust.html">
+        ILLUST
+      </a>
+
+      <a href="novel.html">
+        NOVEL
+      </a>
+
+      <a href="blog.html">
+        BLOG
+      </a>
+
+      <a href="circle.html">
+        CIRCLE
+      </a>
+
     </nav>
+
   </header>
 
 
   <main>
 
+
     <!-- UPDATE -->
 
     <section>
+
       <div class="section-title">
+
         <h2>Update</h2>
-        <span>更新履歴</span>
-      </div>
 
-      <div class="updates">
-
-        <div class="update">
-          <span class="date">2026.09.14</span>
-          <span class="category">SITE</span>
-          <a href="#">サイト開設</a>
-        </div>
+        <span>
+          更新履歴
+        </span>
 
       </div>
+
+
+      <div
+        class="updates"
+        id="updates"
+      ></div>
+
     </section>
 
 
     <!-- ABOUT -->
 
     <section>
+
       <div class="section-title">
+
         <h2>About</h2>
-        <span>このサイトについて</span>
+
+        <span>
+          このサイトについて
+        </span>
+
       </div>
+
 
       <div class="about">
-        
+
         <p>
+
           イラストや小説、同人活動の備忘録です(*´꒳`*)<br>
+
           ファン個人の運営サイトです。<br>
+
           18歳未満の方の閲覧はご遠慮下さい。
+
         </p>
+
       </div>
+
     </section>
 
-    
+
   </main>
 
 
   <footer>
+
     © saneyoshi / ressentiment
+
   </footer>
 
+
+  <script>
+
+
+    /* ---------- 更新履歴を表示 ---------- */
+
+
+    const updateArea =
+      document.getElementById("updates");
+
+
+    updates.forEach(update => {
+
+
+      const row =
+        document.createElement("div");
+
+      row.className =
+        "update";
+
+
+      const date =
+        document.createElement("span");
+
+      date.className =
+        "date";
+
+      date.textContent =
+        update.date;
+
+
+      const category =
+        document.createElement("span");
+
+      category.className =
+        "category";
+
+      category.textContent =
+        update.category;
+
+
+      const link =
+        document.createElement("a");
+
+      link.href =
+        update.link;
+
+      link.textContent =
+        update.text;
+
+
+      row.appendChild(date);
+
+      row.appendChild(category);
+
+      row.appendChild(link);
+
+
+      updateArea.appendChild(row);
+
+    });
+
+
+  </script>
+
+
 </body>
+
 </html>
