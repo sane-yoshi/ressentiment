@@ -37,10 +37,6 @@
       text-decoration: none;
     }
 
-    a:hover {
-      opacity: 0.6;
-    }
-
     /* ---------- header ---------- */
 
     header {
@@ -98,6 +94,10 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: 0.9rem;
       letter-spacing: 0.12em;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
     }
 
     /* ---------- main ---------- */
@@ -191,9 +191,17 @@
     .work-image {
       width: 100%;
       aspect-ratio: 1 / 1;
+
+      /*
+        ここがサムネイルの切り抜き設定。
+        center center = 真ん中
+      */
       object-fit: cover;
+      object-position: center center;
+
       display: block;
       background: #e8e5db;
+
       transition: opacity 0.2s ease;
     }
 
@@ -230,6 +238,7 @@
       position: relative;
       max-width: 90vw;
       max-height: 90vh;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -366,8 +375,6 @@
     </div>
 
 
-    <!-- category filter -->
-
     <div class="filters">
 
       <button class="filter active" data-filter="all">
@@ -385,35 +392,22 @@
     </div>
 
 
-    <!-- gallery -->
-
     <div class="gallery">
-
 
       <!-- 作品01 -->
 
       <figure class="work" data-category="goofy-max">
+
         <img
           src="images/illust01.JPG"
           alt=""
           class="work-image"
+          style="object-position: center center;"
         >
-        <figcaption>2026.06.03</figcaption>
-      </figure>
 
-
-      <!-- 作品02 -->
-
-      <!--
-      <figure class="work" data-category="other">
-        <img
-          src="images/illust02.jpg"
-          alt=""
-          class="work-image"
-        >
         <figcaption>title</figcaption>
+
       </figure>
-      -->
 
 
     </div>
@@ -434,12 +428,14 @@
     </button>
 
     <div class="lightbox-content">
+
       <img
         src=""
         alt=""
         class="lightbox-image"
         id="lightbox-image"
       >
+
     </div>
 
     <button class="next" id="next">
@@ -456,11 +452,11 @@
 
   <script>
 
-    const works = Array.from(
-      document.querySelectorAll(".work")
-    );
+    const works =
+      Array.from(document.querySelectorAll(".work"));
 
-    const filters = document.querySelectorAll(".filter");
+    const filters =
+      document.querySelectorAll(".filter");
 
     const lightbox =
       document.getElementById("lightbox");
@@ -510,9 +506,10 @@
 
         });
 
-        visibleWorks = works.filter(work => {
-          return work.style.display !== "none";
-        });
+        visibleWorks =
+          works.filter(work => {
+            return work.style.display !== "none";
+          });
 
       });
 
@@ -525,9 +522,10 @@
 
       work.addEventListener("click", () => {
 
-        visibleWorks = works.filter(item => {
-          return item.style.display !== "none";
-        });
+        visibleWorks =
+          works.filter(item => {
+            return item.style.display !== "none";
+          });
 
         currentIndex =
           visibleWorks.indexOf(work);
@@ -564,15 +562,22 @@
 
     /* ---------- close ---------- */
 
-    close.addEventListener("click", closeLightbox);
+    close.addEventListener(
+      "click",
+      closeLightbox
+    );
 
-    lightbox.addEventListener("click", event => {
 
-      if (event.target === lightbox) {
-        closeLightbox();
+    lightbox.addEventListener(
+      "click",
+      event => {
+
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+
       }
-
-    });
+    );
 
 
     function closeLightbox() {
@@ -586,59 +591,72 @@
 
     /* ---------- previous ---------- */
 
-    prev.addEventListener("click", event => {
+    prev.addEventListener(
+      "click",
+      event => {
 
-      event.stopPropagation();
+        event.stopPropagation();
 
-      if (visibleWorks.length === 0) return;
+        if (visibleWorks.length === 0) {
+          return;
+        }
 
-      currentIndex =
-        (currentIndex - 1 + visibleWorks.length)
-        % visibleWorks.length;
+        currentIndex =
+          (currentIndex - 1 + visibleWorks.length)
+          % visibleWorks.length;
 
-      showImage();
+        showImage();
 
-    });
+      }
+    );
 
 
     /* ---------- next ---------- */
 
-    next.addEventListener("click", event => {
+    next.addEventListener(
+      "click",
+      event => {
 
-      event.stopPropagation();
+        event.stopPropagation();
 
-      if (visibleWorks.length === 0) return;
+        if (visibleWorks.length === 0) {
+          return;
+        }
 
-      currentIndex =
-        (currentIndex + 1)
-        % visibleWorks.length;
+        currentIndex =
+          (currentIndex + 1)
+          % visibleWorks.length;
 
-      showImage();
+        showImage();
 
-    });
+      }
+    );
 
 
     /* ---------- keyboard ---------- */
 
-    document.addEventListener("keydown", event => {
+    document.addEventListener(
+      "keydown",
+      event => {
 
-      if (!lightbox.classList.contains("show")) {
-        return;
+        if (!lightbox.classList.contains("show")) {
+          return;
+        }
+
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+
+        if (event.key === "ArrowLeft") {
+          prev.click();
+        }
+
+        if (event.key === "ArrowRight") {
+          next.click();
+        }
+
       }
-
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-
-      if (event.key === "ArrowLeft") {
-        prev.click();
-      }
-
-      if (event.key === "ArrowRight") {
-        next.click();
-      }
-
-    });
+    );
 
   </script>
 
