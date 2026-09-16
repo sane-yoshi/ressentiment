@@ -1,1 +1,619 @@
-　
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>NOVEL | ressentiment</title>
+
+
+  <style>
+
+    :root {
+      --bg: #f3f0e6;
+      --mint: #a8cdbd;
+      --green: #243b36;
+      --blue: #456A72;
+      --line: #b8c8bd;
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      background: var(--bg);
+
+      color: var(--green);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+
+      line-height: 2;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    a:hover {
+      opacity: 0.6;
+    }
+
+
+    /* ---------- header ---------- */
+
+
+    header {
+      background-color: var(--mint);
+
+      background-image:
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(243, 240, 230, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(243, 240, 230, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 20%,
+          rgba(243, 240, 230, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+
+      padding: 65px 25px 45px;
+
+      text-align: center;
+    }
+
+
+    .site-title {
+      display: inline-block;
+    }
+
+
+    .site-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+      font-weight: normal;
+
+      letter-spacing: 0.04em;
+
+      color: #456A72;
+    }
+
+
+    nav {
+      margin-top: 35px;
+
+      display: flex;
+
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+    }
+
+
+    nav a {
+      color: #456A72;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- main ---------- */
+
+
+    main {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding: 70px 25px 100px;
+
+      background-image:
+        radial-gradient(
+          circle at 12% 18%,
+          rgba(168, 205, 189, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 86% 72%,
+          rgba(168, 205, 189, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 35%,
+          rgba(168, 205, 189, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+    }
+
+
+    /* ---------- novel header ---------- */
+
+
+    .novel-header {
+      max-width: 680px;
+
+      margin:
+        0 auto 55px;
+
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .novel-category {
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.1em;
+
+      margin-bottom: 8px;
+    }
+
+
+    .novel-title {
+      margin:
+        0 0 8px;
+
+      color: var(--green);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 2rem;
+
+      font-weight: normal;
+
+      letter-spacing: 0.05em;
+    }
+
+
+    .novel-date {
+      color: var(--blue);
+
+      font-size: 0.7rem;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    /* ---------- novel body ---------- */
+
+
+    .novel-body {
+      max-width: 680px;
+
+      margin: 0 auto;
+
+      font-size: 0.92rem;
+
+      letter-spacing: 0.025em;
+
+      white-space: pre-wrap;
+
+      overflow-wrap: break-word;
+    }
+
+
+    /* ---------- navigation ---------- */
+
+
+    .novel-navigation {
+      max-width: 680px;
+
+      margin:
+        70px auto 0;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid var(--line);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.8rem;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    /* ---------- error ---------- */
+
+
+    .error {
+      max-width: 680px;
+
+      margin: 0 auto;
+
+      padding: 30px 0;
+
+      color: var(--blue);
+
+      font-size: 0.85rem;
+    }
+
+
+    /* ---------- footer ---------- */
+
+
+    footer {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding:
+        30px 25px 55px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--blue);
+
+      font-size: 0.7rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- mobile ---------- */
+
+
+    @media (max-width: 600px) {
+
+      header {
+        padding-top: 35px;
+      }
+
+
+      .site-title h1 {
+        font-size: 2.4rem;
+      }
+
+
+      nav {
+        gap: 18px;
+      }
+
+
+      main {
+        padding-top: 50px;
+
+        padding-bottom: 60px;
+      }
+
+
+      .novel-header {
+        margin-bottom: 40px;
+      }
+
+
+      .novel-title {
+        font-size: 1.6rem;
+      }
+
+
+      .novel-body {
+        font-size: 0.88rem;
+      }
+
+
+      .novel-navigation {
+        margin-top: 55px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <a
+      href="index.html"
+      class="site-title"
+    >
+
+      <h1>ressentiment</h1>
+
+    </a>
+
+
+    <nav>
+
+      <a href="illust.html">
+        ILLUST
+      </a>
+
+      <a href="novel.html">
+        NOVEL
+      </a>
+
+      <a href="blog.html">
+        BLOG
+      </a>
+
+      <a href="circle.html">
+        CIRCLE
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+
+    <div
+      class="novel-header"
+      id="novel-header"
+    >
+
+      <div
+        class="novel-category"
+        id="novel-category"
+      ></div>
+
+
+      <h2
+        class="novel-title"
+        id="novel-title"
+      ></h2>
+
+
+      <div
+        class="novel-date"
+        id="novel-date"
+      ></div>
+
+    </div>
+
+
+    <article
+      class="novel-body"
+      id="novel-body"
+    ></article>
+
+
+    <div
+      class="error"
+      id="error"
+      style="display:none;"
+    >
+
+      小説を読み込めませんでした。
+
+    </div>
+
+
+    <div class="novel-navigation">
+
+      <a href="novel.html">
+        ← NOVEL
+      </a>
+
+
+      <span>
+        ressentiment
+      </span>
+
+    </div>
+
+
+  </main>
+
+
+  <footer>
+
+    © saneyoshi / ressentiment
+
+  </footer>
+
+
+  <script>
+
+
+    /* ---------- 小説一覧 ---------- */
+
+
+    const novels = [
+
+      {
+        title: "小説タイトル",
+        category: "goofy-max",
+        date: "2026.09.16",
+        file: "novels/novel01.txt"
+      }
+
+
+      /*
+
+      novel.html と同じ作品データを
+      ここにも書く必要はありません。
+
+      本文ファイルだけ読み込みます。
+
+      */
+
+    ];
+
+
+    /* ---------- URLからファイル名を取得 ---------- */
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    const file =
+      params.get("file");
+
+
+    /* ---------- 作品情報 ---------- */
+
+
+    const currentNovel =
+      novels.find(
+        novel => novel.file === file
+      );
+
+
+    if (currentNovel) {
+
+      document.getElementById(
+        "novel-category"
+      ).textContent =
+        currentNovel.category === "goofy-max"
+          ? "Goofy & Max"
+          : "Other";
+
+
+      document.getElementById(
+        "novel-title"
+      ).textContent =
+        currentNovel.title;
+
+
+      document.getElementById(
+        "novel-date"
+      ).textContent =
+        currentNovel.date;
+
+    }
+
+
+    /* ---------- 本文読み込み ---------- */
+
+
+    if (file) {
+
+      fetch(file)
+
+        .then(response => {
+
+          if (!response.ok) {
+            throw new Error(
+              "File not found"
+            );
+          }
+
+          return response.text();
+
+        })
+
+        .then(text => {
+
+          document.getElementById(
+            "novel-body"
+          ).textContent =
+            text;
+
+        })
+
+        .catch(error => {
+
+          console.error(error);
+
+          document.getElementById(
+            "error"
+          ).style.display =
+            "block";
+
+        });
+
+    } else {
+
+      document.getElementById(
+        "error"
+      ).style.display =
+        "block";
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
