@@ -37,6 +37,10 @@
       text-decoration: none;
     }
 
+    a:hover {
+      opacity: 0.6;
+    }
+
     /* ---------- header ---------- */
 
     header {
@@ -94,10 +98,6 @@
       font-family: Georgia, "Times New Roman", serif;
       font-size: 0.9rem;
       letter-spacing: 0.12em;
-    }
-
-    nav a:hover {
-      opacity: 0.6;
     }
 
     /* ---------- main ---------- */
@@ -181,7 +181,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
-      overflow: hidden;
     }
 
     .work {
@@ -189,19 +188,31 @@
       cursor: pointer;
     }
 
+    /* 正方形の枠 */
+    .work-frame {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #e8e5db;
+    }
+
+    /* 枠の中で画像を拡大・移動 */
     .work-image {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
 
-  /* 作品ごとに変更できる */
-  object-position: var(--x, 50%) var(--y, 50%);
-  transform: scale(var(--zoom, 1));
+      object-position:
+        var(--x, 50%)
+        var(--y, 50%);
 
-  display: block;
-  background: #e8e5db;
-  transition: opacity 0.2s ease;
-}
+      transform:
+        scale(var(--zoom, 1));
+
+      display: block;
+
+      transition: opacity 0.2s ease;
+    }
 
     .work:hover .work-image {
       opacity: 0.75;
@@ -242,6 +253,7 @@
       justify-content: center;
     }
 
+    /* 拡大表示では元画像をそのまま表示 */
     .lightbox-image {
       max-width: 82vw;
       max-height: 82vh;
@@ -373,6 +385,8 @@
     </div>
 
 
+    <!-- category filter -->
+
     <div class="filters">
 
       <button class="filter active" data-filter="all">
@@ -390,18 +404,28 @@
     </div>
 
 
+    <!-- gallery -->
+
     <div class="gallery">
+
 
       <!-- 作品01 -->
 
-      <figure class="work" data-category="goofy-max">
+      <figure
+        class="work"
+        data-category="goofy-max"
+        style="--zoom: 3; --x: 50%; --y: 10%;"
+      >
 
-        <img
-         src="images/illust01.JPG"
-         alt=""
-         class="work-image"
-         style="--zoom: 2; --x: 60%; --y: 30%;"
->
+        <div class="work-frame">
+
+          <img
+            src="images/illust01.JPG"
+            alt=""
+            class="work-image"
+          >
+
+        </div>
 
         <figcaption>title</figcaption>
 
@@ -451,7 +475,9 @@
   <script>
 
     const works =
-      Array.from(document.querySelectorAll(".work"));
+      Array.from(
+        document.querySelectorAll(".work")
+      );
 
     const filters =
       document.querySelectorAll(".filter");
@@ -497,9 +523,13 @@
             category === "all" ||
             work.dataset.category === category
           ) {
+
             work.style.display = "";
+
           } else {
+
             work.style.display = "none";
+
           }
 
         });
@@ -600,7 +630,11 @@
         }
 
         currentIndex =
-          (currentIndex - 1 + visibleWorks.length)
+          (
+            currentIndex
+            - 1
+            + visibleWorks.length
+          )
           % visibleWorks.length;
 
         showImage();
@@ -622,7 +656,10 @@
         }
 
         currentIndex =
-          (currentIndex + 1)
+          (
+            currentIndex
+            + 1
+          )
           % visibleWorks.length;
 
         showImage();
@@ -637,7 +674,9 @@
       "keydown",
       event => {
 
-        if (!lightbox.classList.contains("show")) {
+        if (
+          !lightbox.classList.contains("show")
+        ) {
           return;
         }
 
