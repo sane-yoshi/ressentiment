@@ -263,7 +263,84 @@
     }
 
 
-    /* ---------- navigation ---------- */
+    /* ---------- page navigation ---------- */
+
+
+    .page-navigation {
+      max-width: 600px;
+
+      margin:
+        60px auto 0;
+
+      padding:
+        25px 10px 0;
+
+      border-top:
+        1px solid var(--line);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 25px;
+
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.8rem;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .page-button {
+      border: none;
+
+      background: none;
+
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.8rem;
+
+      letter-spacing: 0.08em;
+
+      cursor: pointer;
+
+      padding: 8px 5px;
+    }
+
+
+    .page-button:hover {
+      opacity: 0.6;
+    }
+
+
+    .page-button:disabled {
+      opacity: 0.25;
+
+      cursor: default;
+    }
+
+
+    .page-count {
+      min-width: 55px;
+
+      text-align: center;
+    }
+
+
+    /* ---------- back navigation ---------- */
 
 
     .novel-navigation {
@@ -377,6 +454,13 @@
       }
 
 
+      .page-navigation {
+        margin-top: 50px;
+
+        gap: 18px;
+      }
+
+
       .novel-navigation {
         margin-top: 55px;
       }
@@ -429,9 +513,10 @@
   <main>
 
 
-    <div
-      class="novel-header"
-    >
+    <!-- ---------- novel header ---------- -->
+
+
+    <div class="novel-header">
 
       <div
         class="novel-category"
@@ -453,10 +538,51 @@
     </div>
 
 
+    <!-- ---------- novel body ---------- -->
+
+
     <article
       class="novel-body"
       id="novel-body"
     ></article>
+
+
+    <!-- ---------- page navigation ---------- -->
+
+
+    <div
+      class="page-navigation"
+      id="page-navigation"
+      style="display:none;"
+    >
+
+      <button
+        class="page-button"
+        id="prev-page"
+      >
+        ← 前へ
+      </button>
+
+
+      <span
+        class="page-count"
+        id="page-count"
+      >
+        1 / 1
+      </span>
+
+
+      <button
+        class="page-button"
+        id="next-page"
+      >
+        次へ →
+      </button>
+
+    </div>
+
+
+    <!-- ---------- error ---------- -->
 
 
     <div
@@ -468,6 +594,9 @@
       小説を読み込めませんでした。
 
     </div>
+
+
+    <!-- ---------- back ---------- -->
 
 
     <div class="novel-navigation">
@@ -497,7 +626,7 @@
   <script>
 
 
-    /* ---------- URLから作品情報を取得 ---------- */
+    /* ---------- URLから情報を取得 ---------- */
 
 
     const params =
@@ -509,14 +638,21 @@
     const file =
       params.get("file");
 
+
     const title =
       params.get("title");
+
 
     const date =
       params.get("date");
 
+
     const category =
       params.get("category");
+
+
+    const paging =
+      params.get("paging") === "true";
 
 
     /* ---------- タイトル ---------- */
@@ -548,7 +684,9 @@
     /* ---------- ジャンル ---------- */
 
 
-    if (category === "goofy-max") {
+    if (
+      category === "goofy-max"
+    ) {
 
       document.getElementById(
         "novel-category"
@@ -563,6 +701,122 @@
         "Other";
 
     }
+
+
+    /* ---------- ページ関連 ---------- */
+
+
+    const novelBody =
+      document.getElementById(
+        "novel-body"
+      );
+
+
+    const pageNavigation =
+      document.getElementById(
+        "page-navigation"
+      );
+
+
+    const pageCount =
+      document.getElementById(
+        "page-count"
+      );
+
+
+    const prevPage =
+      document.getElementById(
+        "prev-page"
+      );
+
+
+    const nextPage =
+      document.getElementById(
+        "next-page"
+      );
+
+
+    let pages = [];
+
+    let currentPage = 0;
+
+
+    /* ---------- ページ表示 ---------- */
+
+
+    function showPage() {
+
+      if (pages.length === 0) {
+        return;
+      }
+
+
+      novelBody.textContent =
+        pages[currentPage];
+
+
+      pageCount.textContent =
+        (currentPage + 1) +
+        " / " +
+        pages.length;
+
+
+      prevPage.disabled =
+        currentPage === 0;
+
+
+      nextPage.disabled =
+        currentPage ===
+        pages.length - 1;
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ---------- 前のページ ---------- */
+
+
+    prevPage.addEventListener(
+      "click",
+      () => {
+
+        if (currentPage > 0) {
+
+          currentPage--;
+
+          showPage();
+
+        }
+
+      }
+    );
+
+
+    /* ---------- 次のページ ---------- */
+
+
+    nextPage.addEventListener(
+      "click",
+      () => {
+
+        if (
+          currentPage <
+          pages.length - 1
+        ) {
+
+          currentPage++;
+
+          showPage();
+
+        }
+
+      }
+    );
 
 
     /* ---------- 本文読み込み ---------- */
@@ -588,12 +842,40 @@
 
         .then(text => {
 
-          document.getElementById(
-            "novel-body"
-          ).textContent =
-            text;
+
+          /* ---------- ページ送りあり ---------- */
+
+
+          if (paging) {
+
+            pages =
+              text.split(
+                "===PAGE==="
+              );
+
+
+            pageNavigation.style.display =
+              "flex";
+
+
+            showPage();
+
+
+          }
+
+
+          /* ---------- ページ送りなし ---------- */
+
+
+          else {
+
+            novelBody.textContent =
+              text;
+
+          }
 
         })
+
 
         .catch(error => {
 
@@ -614,6 +896,46 @@
         "block";
 
     }
+
+
+    /* ---------- キーボード操作 ---------- */
+
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        if (!paging) {
+          return;
+        }
+
+
+        if (
+          event.key === "ArrowLeft" &&
+          currentPage > 0
+        ) {
+
+          currentPage--;
+
+          showPage();
+
+        }
+
+
+        if (
+          event.key === "ArrowRight" &&
+          currentPage <
+            pages.length - 1
+        ) {
+
+          currentPage++;
+
+          showPage();
+
+        }
+
+      }
+    );
 
   </script>
 
