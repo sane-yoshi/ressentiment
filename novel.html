@@ -1,1 +1,775 @@
-　
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <!-- ==================================================
+       小説データ
+       ★ 小説を追加・編集するときは、ここだけ触ればOK ★
+
+       新しい小説を一番上に追加してください。
+       上にある作品ほど新しい作品として表示されます。
+
+       category：
+       "goofy-max" または "other"
+
+       link：
+       本文ページのファイル名
+       例）novel01.html
+
+       ================================================== -->
+
+  <script>
+
+    const novels = [
+
+      /* ---------- 作品01 ---------- */
+
+      {
+        title: "小説タイトル",
+        category: "goofy-max",
+        date: "2026.09.16",
+        description: "作品の説明をここに入れます。",
+        link: "novel01.html"
+      }
+
+
+      /* ---------- 小説を追加する場合 ----------
+
+      上の } の後ろに「,」を付けて、
+
+      {
+        title: "新しい小説",
+        category: "goofy-max",
+        date: "2026.09.20",
+        description: "作品の説明",
+        link: "novel02.html"
+      }
+
+      のように追加する。
+
+      ------------------------------------------ */
+
+    ];
+
+  </script>
+
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>NOVEL | ressentiment</title>
+
+
+  <style>
+
+    :root {
+      --bg: #f3f0e6;
+      --mint: #a8cdbd;
+      --green: #243b36;
+      --blue: #456A72;
+      --line: #b8c8bd;
+    }
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+
+    body {
+      margin: 0;
+
+      background: var(--bg);
+
+      color: var(--green);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+
+      line-height: 1.8;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    a:hover {
+      opacity: 0.6;
+    }
+
+
+    /* ---------- header ---------- */
+
+
+    header {
+      background-color: var(--mint);
+
+      background-image:
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(243, 240, 230, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(243, 240, 230, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 20%,
+          rgba(243, 240, 230, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+
+      padding: 65px 25px 45px;
+
+      text-align: center;
+    }
+
+
+    .site-title {
+      display: inline-block;
+    }
+
+
+    .site-title h1 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+      font-weight: normal;
+
+      letter-spacing: 0.04em;
+
+      color: #456A72;
+    }
+
+
+    nav {
+      margin-top: 35px;
+
+      display: flex;
+
+      gap: 30px;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+    }
+
+
+    nav a {
+      color: #456A72;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.9rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- main ---------- */
+
+
+    main {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding: 70px 25px 100px;
+
+      background-image:
+        radial-gradient(
+          circle at 12% 18%,
+          rgba(168, 205, 189, 0.45) 0 2px,
+          transparent 3px
+        ),
+
+        radial-gradient(
+          circle at 86% 72%,
+          rgba(168, 205, 189, 0.35) 0 3px,
+          transparent 4px
+        ),
+
+        radial-gradient(
+          circle at 65% 35%,
+          rgba(168, 205, 189, 0.3) 0 1px,
+          transparent 2px
+        );
+
+      background-size:
+        180px 180px,
+        240px 240px,
+        130px 130px;
+    }
+
+
+    .page-title {
+      margin-bottom: 40px;
+    }
+
+
+    .page-title h2 {
+      margin: 0;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 2rem;
+
+      font-weight: normal;
+
+      letter-spacing: 0.08em;
+
+      color: var(--blue);
+    }
+
+
+    .page-title p {
+      margin: 3px 0 0;
+
+      color: var(--blue);
+
+      font-size: 0.7rem;
+    }
+
+
+    /* ---------- category ---------- */
+
+
+    .filters {
+      display: flex;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      flex-wrap: wrap;
+
+      margin-bottom: 45px;
+    }
+
+
+    .filter {
+      border:
+        1px solid var(--line);
+
+      background: transparent;
+
+      color: var(--blue);
+
+      padding: 7px 16px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.75rem;
+
+      letter-spacing: 0.08em;
+
+      cursor: pointer;
+    }
+
+
+    .filter:hover,
+    .filter.active {
+      background: var(--mint);
+    }
+
+
+    /* ---------- novel list ---------- */
+
+
+    .novel-list {
+      max-width: 760px;
+
+      margin: 0 auto;
+    }
+
+
+    .novel {
+      display: block;
+
+      padding:
+        22px 5px 25px;
+
+      border-bottom:
+        1px dotted var(--line);
+
+      cursor: pointer;
+    }
+
+
+    .novel:first-child {
+      border-top:
+        1px dotted var(--line);
+    }
+
+
+    .novel:hover {
+      opacity: 0.65;
+    }
+
+
+    .novel-date {
+      color: var(--blue);
+
+      font-size: 0.72rem;
+
+      letter-spacing: 0.08em;
+
+      margin-bottom: 3px;
+    }
+
+
+    .novel-title {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 1.25rem;
+
+      color: var(--green);
+
+      margin-bottom: 5px;
+    }
+
+
+    .novel-info {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 7px;
+    }
+
+
+    .novel-category {
+      display: inline-block;
+
+      color: var(--blue);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.68rem;
+
+      letter-spacing: 0.08em;
+    }
+
+
+    .novel-description {
+      color: var(--green);
+
+      font-size: 0.78rem;
+
+      opacity: 0.8;
+    }
+
+
+    /* ---------- footer ---------- */
+
+
+    footer {
+      max-width: 960px;
+
+      margin: 0 auto;
+
+      padding:
+        30px 25px 55px;
+
+      border-top:
+        1px solid var(--line);
+
+      color: var(--blue);
+
+      font-size: 0.7rem;
+
+      letter-spacing: 0.12em;
+    }
+
+
+    /* ---------- mobile ---------- */
+
+
+    @media (max-width: 600px) {
+
+      header {
+        padding-top: 35px;
+      }
+
+
+      .site-title h1 {
+        font-size: 2.4rem;
+      }
+
+
+      nav {
+        gap: 18px;
+      }
+
+
+      main {
+        padding-top: 50px;
+
+        padding-bottom: 60px;
+      }
+
+
+      .novel {
+        padding:
+          18px 2px 21px;
+      }
+
+
+      .novel-title {
+        font-size: 1.1rem;
+      }
+
+
+      .novel-description {
+        font-size: 0.75rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <header>
+
+    <a
+      href="index.html"
+      class="site-title"
+    >
+
+      <h1>ressentiment</h1>
+
+    </a>
+
+
+    <nav>
+
+      <a href="illust.html">
+        ILLUST
+      </a>
+
+      <a href="novel.html">
+        NOVEL
+      </a>
+
+      <a href="blog.html">
+        BLOG
+      </a>
+
+      <a href="circle.html">
+        CIRCLE
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+
+    <div class="page-title">
+
+      <h2>NOVEL</h2>
+
+      <p>新しい順に掲載</p>
+
+    </div>
+
+
+    <!-- category filter -->
+
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        data-filter="all"
+      >
+        ALL
+      </button>
+
+
+      <button
+        class="filter"
+        data-filter="goofy-max"
+      >
+        Goofy &amp; Max
+      </button>
+
+
+      <button
+        class="filter"
+        data-filter="other"
+      >
+        Other
+      </button>
+
+    </div>
+
+
+    <!-- novel list -->
+
+
+    <div
+      class="novel-list"
+      id="novel-list"
+    ></div>
+
+
+  </main>
+
+
+  <footer>
+
+    © saneyoshi / ressentiment
+
+  </footer>
+
+
+  <script>
+
+
+    /* ---------- 小説一覧を作成 ---------- */
+
+
+    const novelList =
+      document.getElementById(
+        "novel-list"
+      );
+
+
+    novels.forEach(novel => {
+
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "novel";
+
+      article.dataset.category =
+        novel.category;
+
+
+      const date =
+        document.createElement("div");
+
+      date.className =
+        "novel-date";
+
+      date.textContent =
+        novel.date;
+
+
+      const title =
+        document.createElement("div");
+
+      title.className =
+        "novel-title";
+
+      title.textContent =
+        novel.title;
+
+
+      const info =
+        document.createElement("div");
+
+      info.className =
+        "novel-info";
+
+
+      const category =
+        document.createElement("span");
+
+      category.className =
+        "novel-category";
+
+
+      if (
+        novel.category === "goofy-max"
+      ) {
+
+        category.textContent =
+          "Goofy & Max";
+
+      } else {
+
+        category.textContent =
+          "Other";
+
+      }
+
+
+      info.appendChild(
+        category
+      );
+
+
+      const description =
+        document.createElement("div");
+
+      description.className =
+        "novel-description";
+
+      description.textContent =
+        novel.description;
+
+
+      article.appendChild(date);
+
+      article.appendChild(title);
+
+      article.appendChild(info);
+
+      article.appendChild(
+        description
+      );
+
+
+      article.addEventListener(
+        "click",
+        () => {
+
+          window.location.href =
+            novel.link;
+
+        }
+      );
+
+
+      novelList.appendChild(
+        article
+      );
+
+    });
+
+
+    /* ---------- category filter ---------- */
+
+
+    const filters =
+      document.querySelectorAll(
+        ".filter"
+      );
+
+
+    const novelsOnPage =
+      Array.from(
+        document.querySelectorAll(
+          ".novel"
+        )
+      );
+
+
+    filters.forEach(filter => {
+
+
+      filter.addEventListener(
+        "click",
+        () => {
+
+
+          filters.forEach(item => {
+
+            item.classList.remove(
+              "active"
+            );
+
+          });
+
+
+          filter.classList.add(
+            "active"
+          );
+
+
+          const selectedCategory =
+            filter.dataset.filter;
+
+
+          novelsOnPage.forEach(
+            novel => {
+
+
+              if (
+                selectedCategory ===
+                  "all" ||
+
+                novel.dataset.category ===
+                  selectedCategory
+              ) {
+
+                novel.style.display =
+                  "";
+
+              } else {
+
+                novel.style.display =
+                  "none";
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>
