@@ -17,6 +17,10 @@
        本文ファイルの場所
        例）novels/novel01.txt
 
+       paging：
+       true  = ページ送りあり
+       false = 全文を1ページで表示
+
        ================================================== -->
 
   <script>
@@ -29,8 +33,9 @@
         title: "夜明け",
         category: "other",
         date: "2022.12.04",
-        description: "ダンガンロンパV3/最キボ/全年齢",
-        file: "novels/novel01.txt"
+        description: "弾丸論破53/最キボ/全年齢",
+        file: "novels/novel01.txt",
+        paging: false
       }
 
 
@@ -43,13 +48,15 @@
         category: "goofy-max",
         date: "2026.09.20",
         description: "作品の説明",
-        file: "novels/novel02.txt"
+        file: "novels/novel02.txt",
+        paging: false
       },
 
       のように追加してください。
 
-      新しい作品を一番上に追加すると、
-      自動的に新しい順で表示されます。
+      paging:
+      true  → ページ送りあり
+      false → 全文表示
 
       ------------------------------------------ */
 
@@ -86,7 +93,9 @@
 
     body {
       margin: 0;
+
       background: var(--bg);
+
       color: var(--green);
 
       font-family:
@@ -142,6 +151,7 @@
         130px 130px;
 
       padding: 65px 25px 45px;
+
       text-align: center;
     }
 
@@ -691,24 +701,34 @@
           const params =
             new URLSearchParams();
 
+
           params.set(
             "file",
             novel.file
           );
+
 
           params.set(
             "title",
             novel.title
           );
 
+
           params.set(
             "date",
             novel.date
           );
 
+
           params.set(
             "category",
             novel.category
+          );
+
+
+          params.set(
+            "paging",
+            novel.paging
           );
 
 
