@@ -8,11 +8,22 @@
        ★ 小説を追加するときは、ここだけ編集 ★
 
        新しい作品を一番上に追加してください。
+       上にある作品ほど新しい作品として表示されます。
+
+       category：
+       "goofy-max" または "other"
+
+       file：
+       本文ファイルの場所
+       例）novels/novel01.txt
+
        ================================================== -->
 
   <script>
 
     const novels = [
+
+      /* ---------- 作品01 ---------- */
 
       {
         title: "小説タイトル",
@@ -33,16 +44,12 @@
         date: "2026.09.20",
         description: "作品の説明",
         file: "novels/novel02.txt"
-      }
+      },
 
       のように追加してください。
 
-      category は、
-
-      "goofy-max"
-      "other"
-
-      のどちらか。
+      新しい作品を一番上に追加すると、
+      自動的に新しい順で表示されます。
 
       ------------------------------------------ */
 
@@ -79,9 +86,7 @@
 
     body {
       margin: 0;
-
       background: var(--bg);
-
       color: var(--green);
 
       font-family:
@@ -137,7 +142,6 @@
         130px 130px;
 
       padding: 65px 25px 45px;
-
       text-align: center;
     }
 
@@ -445,7 +449,6 @@
 
       main {
         padding-top: 50px;
-
         padding-bottom: 60px;
       }
 
@@ -575,7 +578,7 @@
   <script>
 
 
-    /* ---------- 小説一覧 ---------- */
+    /* ---------- 小説一覧を作成 ---------- */
 
 
     const novelList =
@@ -678,15 +681,40 @@
       );
 
 
+      /* ---------- 本文ページへ ---------- */
+
+
       article.addEventListener(
         "click",
         () => {
 
+          const params =
+            new URLSearchParams();
+
+          params.set(
+            "file",
+            novel.file
+          );
+
+          params.set(
+            "title",
+            novel.title
+          );
+
+          params.set(
+            "date",
+            novel.date
+          );
+
+          params.set(
+            "category",
+            novel.category
+          );
+
+
           window.location.href =
-            "novel-viewer.html?file=" +
-            encodeURIComponent(
-              novel.file
-            );
+            "novel-viewer.html?" +
+            params.toString();
 
         }
       );
