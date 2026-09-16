@@ -5,7 +5,7 @@ backend:
   repo: sane-yoshi/ressentiment
 
 media_folder: /blog-images
-public_folder: /blog-images
+public_folder: /ressentiment/blog-images
 
 collections:
 
