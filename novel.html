@@ -29,16 +29,16 @@
 
       /* ---------- 作品01 ---------- */
 
-　　　{
+      {
         title: "月光",
         category: "other",
-        date: "2025.05.14",
+        date: "2025.05.22",
         description: "FE/リュ♂ディア/R18",
         file: "novels/novel03.txt",
         paging: true
       },
 
-　　　{
+      {
         title: "存在証明",
         category: "other",
         date: "2025.05.14",
@@ -430,6 +430,38 @@
       font-size: 0.78rem;
 
       opacity: 0.8;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+    }
+
+
+    /* ---------- gender symbol ---------- */
+
+    /*
+      ♂・♀だけ文字の位置や大きさが
+      周囲の文字から浮かないように調整。
+      小説データには普通に ♂ / ♀ と入力するだけでOK。
+    */
+
+    .gender-symbol {
+      display: inline-block;
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      font-size: 0.9em;
+
+      line-height: 1;
+
+      vertical-align: -0.04em;
+
+      margin: 0 0.03em;
     }
 
 
@@ -477,6 +509,7 @@
 
       main {
         padding-top: 50px;
+
         padding-bottom: 60px;
       }
 
@@ -615,6 +648,72 @@
       );
 
 
+    /*
+      説明文の中にある ♂ / ♀ を
+      自動的に専用の span に入れる。
+
+      小説データ側では、
+
+      description: "FE/リュ♂ディア/R18"
+
+      のように普通に書けばOK。
+    */
+
+    function createDescription(
+      text
+    ) {
+
+      const description =
+        document.createElement("div");
+
+      description.className =
+        "novel-description";
+
+
+      const parts =
+        text.split(
+          /([♂♀])/g
+        );
+
+
+      parts.forEach(part => {
+
+        if (
+          part === "♂" ||
+          part === "♀"
+        ) {
+
+          const symbol =
+            document.createElement("span");
+
+          symbol.className =
+            "gender-symbol";
+
+          symbol.textContent =
+            part;
+
+          description.appendChild(
+            symbol
+          );
+
+        } else {
+
+          description.appendChild(
+            document.createTextNode(
+              part
+            )
+          );
+
+        }
+
+      });
+
+
+      return description;
+
+    }
+
+
     novels.forEach(novel => {
 
 
@@ -682,14 +781,14 @@
       );
 
 
+      /*
+        説明文を作成
+      */
+
       const description =
-        document.createElement("div");
-
-      description.className =
-        "novel-description";
-
-      description.textContent =
-        novel.description;
+        createDescription(
+          novel.description
+        );
 
 
       article.appendChild(
