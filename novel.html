@@ -5,32 +5,21 @@
 
   <!-- ==================================================
        小説データ
-       ★ 小説を追加・編集するときは、ここだけ触ればOK ★
+       ★ 小説を追加するときは、ここだけ編集 ★
 
-       新しい小説を一番上に追加してください。
-       上にある作品ほど新しい作品として表示されます。
-
-       category：
-       "goofy-max" または "other"
-
-       link：
-       本文ページのファイル名
-       例）novel01.html
-
+       新しい作品を一番上に追加してください。
        ================================================== -->
 
   <script>
 
     const novels = [
 
-      /* ---------- 作品01 ---------- */
-
       {
         title: "小説タイトル",
         category: "goofy-max",
         date: "2026.09.16",
         description: "作品の説明をここに入れます。",
-        link: "novel01.html"
+        file: "novels/novel01.txt"
       }
 
 
@@ -43,10 +32,17 @@
         category: "goofy-max",
         date: "2026.09.20",
         description: "作品の説明",
-        link: "novel02.html"
+        file: "novels/novel02.txt"
       }
 
-      のように追加する。
+      のように追加してください。
+
+      category は、
+
+      "goofy-max"
+      "other"
+
+      のどちらか。
 
       ------------------------------------------ */
 
@@ -526,7 +522,7 @@
     </div>
 
 
-    <!-- category filter -->
+    <!-- ---------- category ---------- -->
 
 
     <div class="filters">
@@ -557,7 +553,7 @@
     </div>
 
 
-    <!-- novel list -->
+    <!-- ---------- novel list ---------- -->
 
 
     <div
@@ -579,7 +575,7 @@
   <script>
 
 
-    /* ---------- 小説一覧を作成 ---------- */
+    /* ---------- 小説一覧 ---------- */
 
 
     const novelList =
@@ -665,11 +661,17 @@
         novel.description;
 
 
-      article.appendChild(date);
+      article.appendChild(
+        date
+      );
 
-      article.appendChild(title);
+      article.appendChild(
+        title
+      );
 
-      article.appendChild(info);
+      article.appendChild(
+        info
+      );
 
       article.appendChild(
         description
@@ -681,7 +683,10 @@
         () => {
 
           window.location.href =
-            novel.link;
+            "novel-viewer.html?file=" +
+            encodeURIComponent(
+              novel.file
+            );
 
         }
       );
