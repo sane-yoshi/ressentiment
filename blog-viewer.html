@@ -575,25 +575,35 @@
       */
 
       result =
-        result.replace(
-          /!\[([^\]]*)\]\(([^)]+)\)/g,
+  result.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
 
-          function(
-            match,
-            alt,
-            src
-          ) {
+    function(
+      match,
+      alt,
+      src
+    ) {
 
-            return (
-              '<img src="' +
-              src +
-              '" alt="' +
-              alt +
-              '">'
-            );
+      let imageUrl = src;
 
-          }
-        );
+      if (src.startsWith("/ressentiment/")) {
+
+        imageUrl =
+          "https://sane-yoshi.github.io" +
+          src;
+
+      }
+
+      return (
+        '<img src="' +
+        imageUrl +
+        '" alt="' +
+        alt +
+        '">'
+      );
+
+    }
+  );
 
 
       /*
