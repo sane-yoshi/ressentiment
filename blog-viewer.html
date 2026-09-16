@@ -12,6 +12,7 @@
 
   <title>BLOG | ressentiment</title>
 
+
   <style>
 
     :root {
@@ -22,9 +23,11 @@
       --line: #b8c8bd;
     }
 
+
     * {
       box-sizing: border-box;
     }
+
 
     body {
       margin: 0;
@@ -41,19 +44,23 @@
       line-height: 1.8;
     }
 
+
     a {
       color: inherit;
       text-decoration: none;
     }
+
 
     a:hover {
       opacity: 0.6;
     }
 
 
-    /* ---------- header ---------- */
+    /* =========================
+       SITE HEADER
+    ========================= */
 
-    header {
+    body > header {
       background-color: var(--mint);
 
       background-image:
@@ -62,13 +69,11 @@
           rgba(243, 240, 230, 0.45) 0 2px,
           transparent 3px
         ),
-
         radial-gradient(
           circle at 80% 70%,
           rgba(243, 240, 230, 0.35) 0 3px,
           transparent 4px
         ),
-
         radial-gradient(
           circle at 65% 20%,
           rgba(243, 240, 230, 0.3) 0 1px,
@@ -81,13 +86,14 @@
         130px 130px;
 
       padding: 65px 25px 45px;
-
       text-align: center;
     }
+
 
     .site-title {
       display: inline-block;
     }
+
 
     .site-title h1 {
       margin: 0;
@@ -97,27 +103,22 @@
         "Times New Roman",
         serif;
 
-      font-size:
-        clamp(3rem, 8vw, 5.5rem);
-
+      font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: normal;
-
       letter-spacing: 0.04em;
-
       color: #456A72;
     }
+
 
     nav {
       margin-top: 35px;
 
       display: flex;
-
       gap: 30px;
-
       flex-wrap: wrap;
-
       justify-content: center;
     }
+
 
     nav a {
       color: #456A72;
@@ -128,18 +129,17 @@
         serif;
 
       font-size: 0.9rem;
-
       letter-spacing: 0.12em;
     }
 
 
-    /* ---------- main ---------- */
+    /* =========================
+       MAIN
+    ========================= */
 
     main {
       max-width: 960px;
-
       margin: 0 auto;
-
       padding: 70px 25px 100px;
 
       background-image:
@@ -148,13 +148,11 @@
           rgba(168, 205, 189, 0.45) 0 2px,
           transparent 3px
         ),
-
         radial-gradient(
           circle at 86% 72%,
           rgba(168, 205, 189, 0.35) 0 3px,
           transparent 4px
         ),
-
         radial-gradient(
           circle at 65% 35%,
           rgba(168, 205, 189, 0.3) 0 1px,
@@ -168,27 +166,21 @@
     }
 
 
-    /* ---------- article ---------- */
-
     .article {
       max-width: 760px;
-
       margin: 0 auto;
     }
 
 
-    /* ---------- article header ---------- */
+    /* =========================
+       ARTICLE HEADER
+    ========================= */
 
     .article-header {
       max-width: 600px;
-
-      margin:
-        0 auto 55px;
-
+      margin: 0 auto 55px;
       padding-bottom: 25px;
-
-      border-bottom:
-        1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
 
@@ -201,16 +193,13 @@
         serif;
 
       font-size: 0.72rem;
-
       letter-spacing: 0.1em;
-
       margin-bottom: 8px;
     }
 
 
     .article-title {
-      margin:
-        0 0 8px;
+      margin: 0 0 8px;
 
       color: var(--green);
 
@@ -220,9 +209,7 @@
         serif;
 
       font-size: 2rem;
-
       font-weight: normal;
-
       letter-spacing: 0.05em;
 
       overflow-wrap: break-word;
@@ -231,40 +218,35 @@
 
     .article-date {
       color: var(--blue);
-
       font-size: 0.7rem;
-
       letter-spacing: 0.08em;
     }
 
 
-    /* ---------- article body ---------- */
+    /* =========================
+       ARTICLE BODY
+    ========================= */
 
     .article-body {
       max-width: 600px;
-
       margin: 0 auto;
 
-      padding: 0 10px;
-
-      font-size: 0.92rem;
-
-      line-height: 2.2;
-
-      letter-spacing: 0.025em;
+      font-size: 0.95rem;
+      line-height: 2;
 
       word-break: break-word;
     }
+
 
     .article-body p {
       margin: 0 0 1.5em;
     }
 
+
     .article-body img {
       display: block;
 
       max-width: 100%;
-
       height: auto;
 
       margin: 25px auto;
@@ -272,15 +254,17 @@
       border: 1px solid var(--line);
     }
 
+
     .article-body a {
       color: var(--blue);
-
       text-decoration: underline;
     }
+
 
     .article-body strong {
       font-weight: bold;
     }
+
 
     .article-body h2,
     .article-body h3 {
@@ -290,38 +274,35 @@
         serif;
 
       font-weight: normal;
-
       color: var(--green);
     }
 
+
     .article-body blockquote {
       margin: 1.5em 0;
-
       padding: 5px 20px;
 
-      border-left:
-        2px solid var(--line);
+      border-left: 2px solid var(--line);
 
       color: var(--blue);
     }
 
 
-    /* ---------- back ---------- */
+    /* =========================
+       BACK LINK
+    ========================= */
 
     .back {
       max-width: 600px;
+      margin: 70px auto 0;
 
-      margin:
-        70px auto 0;
+      padding: 25px 0 0;
 
-      padding:
-        25px 10px 0;
-
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
 
       text-align: left;
     }
+
 
     .back a {
       color: var(--blue);
@@ -332,86 +313,80 @@
         serif;
 
       font-size: 0.8rem;
-
       letter-spacing: 0.08em;
     }
 
 
-    /* ---------- loading / error ---------- */
+    /* =========================
+       LOADING / ERROR
+    ========================= */
 
     .loading,
     .error {
       text-align: center;
-
       color: var(--blue);
-
       padding: 50px 0;
     }
 
 
-    /* ---------- footer ---------- */
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       max-width: 960px;
-
       margin: 0 auto;
 
-      padding:
-        30px 25px 55px;
+      padding: 30px 25px 55px;
 
-      border-top:
-        1px solid var(--line);
+      border-top: 1px solid var(--line);
 
       color: var(--blue);
 
       font-size: 0.7rem;
-
       letter-spacing: 0.12em;
     }
 
 
-    /* ---------- mobile ---------- */
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 600px) {
 
-      header {
+      body > header {
         padding-top: 35px;
       }
+
 
       .site-title h1 {
         font-size: 2.4rem;
       }
 
+
       nav {
         gap: 18px;
       }
 
+
       main {
         padding-top: 50px;
-
         padding-bottom: 60px;
       }
 
-      .article {
-        max-width: 100%;
-      }
 
       .article-header {
         margin-bottom: 40px;
       }
 
+
       .article-title {
         font-size: 1.6rem;
       }
 
+
       .article-body {
-        font-size: 0.88rem;
-
-        line-height: 2.15;
-      }
-
-      .back {
-        margin-top: 55px;
+        font-size: 0.9rem;
       }
 
     }
@@ -423,15 +398,18 @@
 
 <body>
 
+
+  <!-- =========================
+       SITE HEADER
+  ========================= -->
+
   <header>
 
     <a
       href="index.html"
       class="site-title"
     >
-
       <h1>ressentiment</h1>
-
     </a>
 
 
@@ -458,6 +436,10 @@
   </header>
 
 
+  <!-- =========================
+       MAIN
+  ========================= -->
+
   <main>
 
     <article
@@ -474,10 +456,12 @@
   </main>
 
 
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer>
-
     © saneyoshi / ressentiment
-
   </footer>
 
 
@@ -486,18 +470,18 @@
     const article =
       document.getElementById("article");
 
-
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-
     const fileName =
       params.get("file");
 
 
-    /* ---------- HTMLエスケープ ---------- */
+    /* =========================
+       ESCAPE HTML
+    ========================= */
 
     function escapeHtml(text) {
 
@@ -511,7 +495,9 @@
     }
 
 
-    /* ---------- Front Matter ---------- */
+    /* =========================
+       FRONT MATTER
+    ========================= */
 
     function parseFrontMatter(text) {
 
@@ -566,8 +552,7 @@
               .trim();
 
 
-          data[key] =
-            value;
+          data[key] = value;
 
         });
 
@@ -575,16 +560,13 @@
       return {
 
         title:
-          data.title ||
-          "無題",
+          data.title || "無題",
 
         date:
-          data.date ||
-          "",
+          data.date || "",
 
         category:
-          data.category ||
-          "その他",
+          data.category || "その他",
 
         body:
           match[2]
@@ -594,9 +576,9 @@
     }
 
 
-    /*
-      Markdownを簡易的にHTMLへ変換
-    */
+    /* =========================
+       MARKDOWN
+    ========================= */
 
     function markdownToHtml(markdown) {
 
@@ -613,9 +595,7 @@
 
       function flushParagraph() {
 
-        if (
-          paragraph.length === 0
-        ) {
+        if (paragraph.length === 0) {
           return;
         }
 
@@ -635,9 +615,7 @@
 
       lines.forEach(line => {
 
-        if (
-          line.trim() === ""
-        ) {
+        if (line.trim() === "") {
 
           flushParagraph();
 
@@ -646,9 +624,7 @@
         }
 
 
-        if (
-          line.startsWith("## ")
-        ) {
+        if (line.startsWith("## ")) {
 
           flushParagraph();
 
@@ -664,9 +640,7 @@
         }
 
 
-        if (
-          line.startsWith("# ")
-        ) {
+        if (line.startsWith("# ")) {
 
           flushParagraph();
 
@@ -682,9 +656,7 @@
         }
 
 
-        if (
-          line.startsWith("> ")
-        ) {
+        if (line.startsWith("> ")) {
 
           flushParagraph();
 
@@ -713,32 +685,23 @@
     }
 
 
-    /* ---------- インラインMarkdown ---------- */
+    /* =========================
+       INLINE MARKDOWN
+    ========================= */
 
     function inlineMarkdown(text) {
-
-      /*
-        まず通常文字を安全なHTMLにする
-      */
 
       let result =
         escapeHtml(text);
 
 
-      /*
-        画像
-        ![alt](URL)
-      */
+      /* IMAGE */
 
       result =
         result.replace(
           /!\[([^\]]*)\]\(([^)]+)\)/g,
 
-          function(
-            match,
-            alt,
-            src
-          ) {
+          function(match, alt, src) {
 
             let imageUrl = src;
 
@@ -768,10 +731,7 @@
         );
 
 
-      /*
-        リンク
-        [文字](URL)
-      */
+      /* LINK */
 
       result =
         result.replace(
@@ -781,10 +741,7 @@
         );
 
 
-      /*
-        太字
-        **文字**
-      */
+      /* BOLD */
 
       result =
         result.replace(
@@ -794,9 +751,7 @@
         );
 
 
-      /*
-        改行
-      */
+      /* LINE BREAK */
 
       result =
         result.replace(
@@ -806,12 +761,9 @@
 
 
       /*
-        Markdownのエスケープ解除
-
-        例：
-        👏(ˊᗜˋ\*)
-        ↓
-        👏(ˊᗜˋ*)
+        Sveltia / Markdownで
+        \* のように保存された
+        エスケープ文字を元に戻す
       */
 
       result =
@@ -826,7 +778,9 @@
     }
 
 
-    /* ---------- 日付 ---------- */
+    /* =========================
+       DATE
+    ========================= */
 
     function formatDate(date) {
 
@@ -843,18 +797,22 @@
     }
 
 
-    /* ---------- 記事読み込み ---------- */
+    /* =========================
+       LOAD ARTICLE
+    ========================= */
 
     async function loadArticle() {
 
+
       if (!fileName) {
 
-        article.innerHTML =
-          `
+        article.innerHTML = `
+
           <div class="error">
             記事が指定されていません。
           </div>
-          `;
+
+        `;
 
         return;
 
@@ -863,11 +821,12 @@
 
       try {
 
+
         const apiUrl =
-          "https://api.github.com/repos/sane-yoshi/ressentiment/contents/blogs/" +
-          encodeURIComponent(
-            fileName
-          );
+          "https://api.github.com/repos/" +
+          "sane-yoshi/ressentiment/" +
+          "contents/blogs/" +
+          encodeURIComponent(fileName);
 
 
         const response =
@@ -917,8 +876,7 @@
           " | BLOG | ressentiment";
 
 
-        article.innerHTML =
-          `
+        article.innerHTML = `
 
           <header class="article-header">
 
@@ -926,11 +884,9 @@
               ${escapeHtml(data.category)}
             </div>
 
-
             <h2 class="article-title">
               ${escapeHtml(data.title)}
             </h2>
-
 
             <div class="article-date">
               ${formatDate(data.date)}
@@ -954,24 +910,22 @@
 
           </div>
 
-          `;
+        `;
+
 
       }
-
-
       catch (error) {
 
         console.error(error);
 
 
-        article.innerHTML =
-          `
+        article.innerHTML = `
+
           <div class="error">
-
             記事を読み込めませんでした。
-
           </div>
-          `;
+
+        `;
 
       }
 
@@ -981,6 +935,7 @@
     loadArticle();
 
   </script>
+
 
 </body>
 
