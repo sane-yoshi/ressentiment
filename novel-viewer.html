@@ -765,13 +765,12 @@
         pages.length - 1;
 
 
-      const bodyTop =
-      novelBody.getBoundingClientRect().top +
-      window.scrollY -
-      10;
+      const headerTop =
+      document.querySelector(".novel-header").getBoundingClientRect().top +
+      window.scrollY;
 
 　　　　window.scrollTo({
-      top: bodyTop,
+      top: headerTop,
       behavior: "smooth"
 　　　　});
 
