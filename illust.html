@@ -10,11 +10,33 @@
   <!-- ==================================================
        作品を追加・編集するときは
        このページ上部の「作品データ」だけ触ればOK。
+
+       ★ 新しい作品を一番上に追加してください。
+          左上が最新の作品になります。
+
+       ★ R18作品は r18: true にしてください。
        ================================================== -->
 
   <script>
 
     const illustrations = [
+
+      /* ==================================================
+         最新の作品をここに追加
+         ==================================================
+
+      {
+        image: "images/illust02.JPG",
+        category: "goofy-max",
+        title: "2026.09.18",
+        zoom: 1,
+        x: 50,
+        y: 50,
+        r18: false
+      },
+
+      */
+
 
       /* ---------- 作品01 ---------- */
 
@@ -41,27 +63,43 @@
            0 = 上
            50 = 中央
            100 = 下 */
-        y: -30
+        y: -30,
+
+        /* R18作品なら true */
+        r18: false
       }
 
 
-      /* ---------- 作品を追加する場合 ----------
+      /* ==================================================
+         作品追加例
 
-      作品01の } の後ろに「,」を付けて、
+         最新の作品を一番上に追加します。
 
       ,
       {
-        image: "images/illust02.JPG",
+        image: "images/illust03.JPG",
         category: "goofy-max",
-        title: "title",
-        zoom: 1.5,
+        title: "2026.09.20",
+        zoom: 1,
         x: 50,
-        y: 50
+        y: 50,
+        r18: false
       }
 
-      のように追加する。
+         R18作品の場合：
 
-      ------------------------------------------ */
+      ,
+      {
+        image: "images/illust04.JPG",
+        category: "goofy-max",
+        title: "2026.09.21",
+        zoom: 1.5,
+        x: 50,
+        y: 50,
+        r18: true
+      }
+
+         ================================================== */
 
     ];
 
@@ -262,6 +300,7 @@
       aspect-ratio: 1 / 1;
       overflow: hidden;
       background: #e8e5db;
+      position: relative;
     }
 
     /* 枠の中で画像を拡大・移動 */
@@ -281,12 +320,49 @@
 
       display: block;
 
-      transition: opacity 0.2s ease;
+      transition:
+        opacity 0.2s ease,
+        filter 0.2s ease;
     }
 
     .work:hover .work-image {
       opacity: 0.75;
     }
+
+
+    /* ---------- R18 thumbnail ---------- */
+
+    .work.r18 .work-image {
+      filter: blur(18px);
+    }
+
+    .work.r18:hover .work-image {
+      opacity: 0.9;
+    }
+
+    .r18-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      z-index: 2;
+
+      color: var(--bg);
+      background: rgba(36, 59, 54, 0.8);
+
+      padding: 6px 14px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+    }
+
 
     .work figcaption {
       padding-top: 8px;
@@ -324,6 +400,7 @@
       justify-content: center;
     }
 
+
     /* 拡大表示では元画像をそのまま表示 */
 
     .lightbox-image {
@@ -334,6 +411,73 @@
       object-fit: contain;
       display: block;
     }
+
+
+    /* ---------- R18 confirmation ---------- */
+
+    .r18-confirm {
+      display: none;
+
+      text-align: center;
+      color: var(--bg);
+
+      max-width: 400px;
+      padding: 35px 30px;
+    }
+
+    .r18-confirm.show {
+      display: block;
+    }
+
+    .r18-confirm h3 {
+      margin: 0 0 18px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 1.6rem;
+      font-weight: normal;
+      letter-spacing: 0.12em;
+    }
+
+    .r18-confirm p {
+      margin: 0 0 28px;
+      font-size: 0.8rem;
+      line-height: 2;
+    }
+
+    .r18-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .r18-button {
+      border: 1px solid rgba(243, 240, 230, 0.7);
+      background: transparent;
+      color: var(--bg);
+
+      padding: 8px 22px;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+
+      cursor: pointer;
+    }
+
+    .r18-button:hover {
+      background: rgba(243, 240, 230, 0.15);
+    }
+
+
+    /* ---------- lightbox controls ---------- */
 
     .close {
       position: fixed;
@@ -347,6 +491,8 @@
       font-size: 2rem;
       font-weight: normal;
       cursor: pointer;
+
+      z-index: 5;
     }
 
     .prev,
@@ -363,6 +509,8 @@
       font-size: 2rem;
       cursor: pointer;
       padding: 20px;
+
+      z-index: 5;
     }
 
     .prev {
@@ -435,6 +583,10 @@
         padding: 10px;
       }
 
+      .r18-confirm {
+        padding: 30px 20px;
+      }
+
     }
 
   </style>
@@ -473,7 +625,7 @@
 
       <h2>ILLUST</h2>
 
-      <p>左上が最新</p>
+      <p>新しい順に掲載／左上が最新</p>
 
     </div>
 
@@ -517,7 +669,9 @@
   </main>
 
 
-  <!-- lightbox -->
+  <!-- ==================================================
+       lightbox
+       ================================================== -->
 
   <div
     class="lightbox"
@@ -531,6 +685,7 @@
       ×
     </button>
 
+
     <button
       class="prev"
       id="prev"
@@ -538,7 +693,10 @@
       ‹
     </button>
 
+
     <div class="lightbox-content">
+
+      <!-- 通常作品 -->
 
       <img
         src=""
@@ -547,7 +705,42 @@
         id="lightbox-image"
       >
 
+
+      <!-- R18確認画面 -->
+
+      <div
+        class="r18-confirm"
+        id="r18-confirm"
+      >
+
+        <h3>R18</h3>
+
+        <p>
+          この作品には成人向け表現が含まれます。
+        </p>
+
+        <div class="r18-buttons">
+
+          <button
+            class="r18-button"
+            id="r18-view"
+          >
+            見る
+          </button>
+
+          <button
+            class="r18-button"
+            id="r18-back"
+          >
+            戻る
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
+
 
     <button
       class="next"
@@ -568,7 +761,9 @@
 
   <script>
 
-    /* ---------- gallery creation ---------- */
+    /* ==================================================
+       gallery creation
+       ================================================== */
 
     const gallery =
       document.getElementById("gallery");
@@ -581,15 +776,23 @@
 
       figure.className = "work";
 
+      if (item.r18) {
+        figure.classList.add("r18");
+      }
+
       figure.dataset.category =
         item.category;
 
+
+      /* ---------- frame ---------- */
 
       const frame =
         document.createElement("div");
 
       frame.className = "work-frame";
 
+
+      /* ---------- image ---------- */
 
       const image =
         document.createElement("img");
@@ -623,6 +826,26 @@
       frame.appendChild(image);
 
 
+      /* ---------- R18 label ---------- */
+
+      if (item.r18) {
+
+        const r18Label =
+          document.createElement("div");
+
+        r18Label.className =
+          "r18-label";
+
+        r18Label.textContent =
+          "R18";
+
+        frame.appendChild(r18Label);
+
+      }
+
+
+      /* ---------- caption ---------- */
+
       const caption =
         document.createElement("figcaption");
 
@@ -639,7 +862,9 @@
     });
 
 
-    /* ---------- works ---------- */
+    /* ==================================================
+       elements
+       ================================================== */
 
     const works =
       Array.from(
@@ -654,6 +879,15 @@
 
     const lightboxImage =
       document.getElementById("lightbox-image");
+
+    const r18Confirm =
+      document.getElementById("r18-confirm");
+
+    const r18View =
+      document.getElementById("r18-view");
+
+    const r18Back =
+      document.getElementById("r18-back");
 
     const close =
       document.getElementById("close");
@@ -670,7 +904,9 @@
     let currentIndex = 0;
 
 
-    /* ---------- category filter ---------- */
+    /* ==================================================
+       category filter
+       ================================================== */
 
     filters.forEach(filter => {
 
@@ -729,7 +965,9 @@
     });
 
 
-    /* ---------- open lightbox ---------- */
+    /* ==================================================
+       open lightbox
+       ================================================== */
 
     works.forEach(work => {
 
@@ -751,7 +989,7 @@
             visibleWorks.indexOf(work);
 
 
-          showImage();
+          showCurrentWork();
 
 
           lightbox.classList.add(
@@ -768,29 +1006,118 @@
     });
 
 
-    /* ---------- show image ---------- */
+    /* ==================================================
+       show current work
+       ================================================== */
 
-    function showImage() {
+    function showCurrentWork() {
 
       const work =
         visibleWorks[currentIndex];
 
 
+      if (!work) {
+        return;
+      }
+
+
       const image =
-        work.querySelector("img");
+        work.querySelector(".work-image");
 
 
-      lightboxImage.src =
-        image.src;
+      const isR18 =
+        work.classList.contains("r18");
 
 
-      lightboxImage.alt =
-        image.alt;
+      if (isR18) {
+
+        /* R18は画像を隠して確認画面を表示 */
+
+        lightboxImage.style.display =
+          "none";
+
+        r18Confirm.classList.add(
+          "show"
+        );
+
+      } else {
+
+        /* 通常作品 */
+
+        r18Confirm.classList.remove(
+          "show"
+        );
+
+        lightboxImage.style.display =
+          "block";
+
+        lightboxImage.src =
+          image.src;
+
+        lightboxImage.alt =
+          image.alt;
+
+      }
 
     }
 
 
-    /* ---------- close ---------- */
+    /* ==================================================
+       show R18 image
+       ================================================== */
+
+    r18View.addEventListener(
+      "click",
+      () => {
+
+        const work =
+          visibleWorks[currentIndex];
+
+
+        if (!work) {
+          return;
+        }
+
+
+        const image =
+          work.querySelector(".work-image");
+
+
+        lightboxImage.src =
+          image.src;
+
+        lightboxImage.alt =
+          image.alt;
+
+
+        r18Confirm.classList.remove(
+          "show"
+        );
+
+        lightboxImage.style.display =
+          "block";
+
+      }
+    );
+
+
+    /* ==================================================
+       R18 back
+       ================================================== */
+
+    r18Back.addEventListener(
+      "click",
+      () => {
+
+        closeLightbox();
+
+      }
+    );
+
+
+    /* ==================================================
+       close
+       ================================================== */
 
     close.addEventListener(
       "click",
@@ -820,13 +1147,25 @@
         "show"
       );
 
+      r18Confirm.classList.remove(
+        "show"
+      );
+
+      lightboxImage.style.display =
+        "block";
+
+      lightboxImage.src =
+        "";
+
       document.body.style.overflow =
         "";
 
     }
 
 
-    /* ---------- previous ---------- */
+    /* ==================================================
+       previous
+       ================================================== */
 
     prev.addEventListener(
       "click",
@@ -853,13 +1192,15 @@
           % visibleWorks.length;
 
 
-        showImage();
+        showCurrentWork();
 
       }
     );
 
 
-    /* ---------- next ---------- */
+    /* ==================================================
+       next
+       ================================================== */
 
     next.addEventListener(
       "click",
@@ -885,13 +1226,15 @@
           % visibleWorks.length;
 
 
-        showImage();
+        showCurrentWork();
 
       }
     );
 
 
-    /* ---------- keyboard ---------- */
+    /* ==================================================
+       keyboard
+       ================================================== */
 
     document.addEventListener(
       "keydown",
