@@ -25,13 +25,13 @@
        ★ x / y
           画像の移動範囲を0〜100で指定
 
-          x: 0   = 左端
-          x: 50  = 中央
-          x: 100 = 右端
+          x: 0   = 左側を表示
+          x: 50  = 中央を表示
+          x: 100 = 右側を表示
 
-          y: 0   = 上端
-          y: 50  = 中央
-          y: 100 = 下端
+          y: 0   = 上側を表示
+          y: 50  = 中央を表示
+          y: 100 = 下側を表示
 
 
        ★ R18作品は r18: true にしてください。
@@ -71,7 +71,7 @@
            0 = 上
            50 = 中央
            100 = 下 */
-        y: 85,
+        y: 15,
 
         /* R18作品なら true */
         r18: false
@@ -89,9 +89,9 @@
 
         zoom: 3,
 
-        x: 30,
+        x: 70,
 
-        y: 60,
+        y: 40,
 
         r18: false
       },
@@ -108,9 +108,9 @@
 
         zoom: 3,
 
-        x: 70,
+        x: 30,
 
-        y: 30,
+        y: 70,
 
         r18: true
       }
@@ -431,28 +431,23 @@
     }
 
 
-    /* ==================================================
-       thumbnail image
-
-       画像はまず object-fit: cover で
-       正方形の枠いっぱいに配置。
-
-       その後 zoom で拡大。
-
-       x / y は JavaScriptで計算した
-       「移動可能範囲」の0〜100%を使って
-       translateする。
-       ================================================== */
+    /* ---------- thumbnail image ---------- */
 
     .work-image {
       position: absolute;
 
-      width: 100%;
-      height: 100%;
+      left: 50%;
+      top: 50%;
 
-      object-fit: cover;
+      width: auto;
+      height: auto;
+
+      max-width: none;
+      max-height: none;
 
       display: block;
+
+      object-fit: fill;
 
       transform-origin: center center;
 
@@ -1058,29 +1053,6 @@
           "work-image";
 
 
-        /*
-         * zoom / x / y を
-         * CSS変数として保存
-         */
-
-        image.style.setProperty(
-          "--zoom",
-          item.zoom ?? 1
-        );
-
-
-        image.style.setProperty(
-          "--x-position",
-          item.x ?? 50
-        );
-
-
-        image.style.setProperty(
-          "--y-position",
-          item.y ?? 50
-        );
-
-
         frame.appendChild(
           image
         );
@@ -1140,13 +1112,14 @@
         /* ==================================================
            x / y の計算
 
-           画像の実際の表示サイズを取得し、
-           枠からはみ出している部分を計算。
+           画像をまず object-fit: cover と同じ比率で
+           正方形の枠いっぱいになるサイズにする。
 
-           その「移動可能範囲」を
-           0〜100%として扱う。
+           そのあと zoom をかけたサイズを直接指定。
 
-           画像が読み込まれてから計算する。
+           これによって、
+           画像の縦横比が違っても
+           サムネイル枠から余白が出ないようにする。
            ================================================== */
 
         function updateImagePosition() {
@@ -1168,11 +1141,6 @@
           }
 
 
-          /*
-           * object-fit: cover した場合の
-           * 元画像の表示サイズを計算
-           */
-
           const naturalWidth =
             image.naturalWidth;
 
@@ -1190,12 +1158,23 @@
           }
 
 
+          /*
+           * object-fit: cover と同じ計算。
+
+           * 画像が枠を完全に覆うために
+           * 必要な倍率を求める。
+           */
+
           const coverScale =
             Math.max(
               frameWidth / naturalWidth,
               frameHeight / naturalHeight
             );
 
+
+          /*
+           * cover後の基本サイズ
+           */
 
           const baseWidth =
             naturalWidth * coverScale;
@@ -1206,7 +1185,7 @@
 
 
           /*
-           * zoom後の画像サイズ
+           * zoom後の実際の画像サイズ
            */
 
           const zoom =
@@ -1224,7 +1203,7 @@
           /*
            * 枠からはみ出している量。
 
-           * これが実際に動かせる距離。
+           * これが実際の移動可能範囲。
            */
 
           const moveX =
@@ -1242,11 +1221,7 @@
 
 
           /*
-           * 0〜100を移動距離に変換。
-
-           * x: 0   → 左端
-           * x: 50  → 中央
-           * x: 100 → 右端
+           * x / y を0〜100に制限
            */
 
           const x =
@@ -1272,22 +1247,43 @@
           /*
            * 中央からの移動量に変換。
 
-           * 0   = -move/2
-           * 50  = 0
-           * 100 = +move/2
+           * x: 0   → 左側を表示
+           * x: 50  → 中央を表示
+           * x: 100 → 右側を表示
+
+           * y: 0   → 上側を表示
+           * y: 50  → 中央を表示
+           * y: 100 → 下側を表示
+
+           * 「見せたい場所」と
+           * 「画像を動かす方向」は逆なので、
+           * 0.5 - x / 100
+           * 0.5 - y / 100
+           * とする。
            */
 
           const offsetX =
-            (x / 100 - 0.5) * moveX;
+            (0.5 - x / 100) * moveX;
 
 
           const offsetY =
-            (y / 100 - 0.5) * moveY;
+            (0.5 - y / 100) * moveY;
 
 
           /*
-           * 画像を中央から移動
+           * 画像そのものの表示サイズを指定。
+
+           * これにより object-fit と
+           * transform の二重計算を避ける。
            */
+
+          image.style.width =
+            imageWidth + "px";
+
+
+          image.style.height =
+            imageHeight + "px";
+
 
           image.style.position =
             "absolute";
@@ -1301,16 +1297,20 @@
             "50%";
 
 
+          /*
+           * 画像を移動。
+
+           * x / y の0〜100は
+           * 実際の可動範囲そのもの。
+           */
+
           image.style.transform =
             "translate(-50%, -50%) " +
             "translate(" +
             offsetX +
             "px, " +
             offsetY +
-            "px) " +
-            "scale(" +
-            zoom +
-            ")";
+            "px)";
 
         }
 
