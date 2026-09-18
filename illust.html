@@ -7,12 +7,32 @@
 
   <title>ILLUST | ressentiment</title>
 
+
   <!-- ==================================================
-       作品を追加・編集するときは
-       このページ上部の「作品データ」だけ触ればOK。
+       作品データ
 
        ★ 新しい作品を一番上に追加してください。
           左上が最新の作品になります。
+
+       ★ zoom
+          サムネイル内での拡大率
+
+          1 = 等倍
+          2 = 2倍
+          3 = 3倍
+
+
+       ★ x / y
+          画像の移動範囲を0〜100で指定
+
+          x: 0   = 左端
+          x: 50  = 中央
+          x: 100 = 右端
+
+          y: 0   = 上端
+          y: 50  = 中央
+          y: 100 = 下端
+
 
        ★ R18作品は r18: true にしてください。
        ================================================== -->
@@ -23,19 +43,7 @@
 
       /* ==================================================
          最新の作品をここに追加
-         ==================================================
-
-      {
-        image: "images/illust02.JPG",
-        category: "goofy-max",
-        title: "2026.09.18",
-        zoom: 1,
-        x: 50,
-        y: 50,
-        r18: false
-      },
-
-      */
+         ================================================== */
 
 
       /* ---------- 作品01 ---------- */
@@ -43,39 +51,48 @@
       {
         image: "images/illust01.JPG",
 
-        /* ジャンル：
+        /* ジャンル
            "goofy-max" または "other" */
         category: "goofy-max",
 
         /* 作品タイトル */
-        title: "2026.06.03",
+        title: "2026.06.03 マク",
 
-        /* サムネイルの拡大率 */
+        /* 拡大率 */
         zoom: 3,
 
-        /* サムネイルの左右位置
+        /* 左右位置
            0 = 左
            50 = 中央
            100 = 右 */
         x: 50,
 
-        /* サムネイルの上下位置
+        /* 上下位置
            0 = 上
            50 = 中央
            100 = 下 */
-        y: -30,
+        y: 20,
 
         /* R18作品なら true */
         r18: false
       },
-      
+
+
+      /* ---------- 作品02 ---------- */
+
       {
         image: "images/anst04.JPG",
+
         category: "other",
+
         title: "2022.05.08 あん☆/ひよジュン",
+
         zoom: 3,
-        x: 200,
-        y: -30,
+
+        x: 70,
+
+        y: 25,
+
         r18: false
       }
 
@@ -83,29 +100,36 @@
       /* ==================================================
          作品追加例
 
-         最新の作品を一番上に追加します。
+         ★ 最新作を一番上に追加します。
 
       ,
       {
         image: "images/illust03.JPG",
         category: "goofy-max",
         title: "2026.09.20",
+
         zoom: 1,
+
         x: 50,
         y: 50,
+
         r18: false
       }
 
-         R18作品の場合：
+
+         ★ R18作品の場合
 
       ,
       {
         image: "images/illust04.JPG",
         category: "goofy-max",
         title: "2026.09.21",
+
         zoom: 1.5,
+
         x: 50,
         y: 50,
+
         r18: true
       }
 
@@ -126,27 +150,34 @@
       --line: #b8c8bd;
     }
 
+
     * {
       box-sizing: border-box;
     }
 
+
     body {
       margin: 0;
+
       background: var(--bg);
       color: var(--green);
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Hiragino Kaku Gothic ProN",
         "Yu Gothic",
         sans-serif;
+
       line-height: 1.8;
     }
+
 
     a {
       color: inherit;
       text-decoration: none;
     }
+
 
     a:hover {
       opacity: 0.6;
@@ -181,34 +212,58 @@
         130px 130px;
 
       padding: 65px 25px 45px;
+
       text-align: center;
     }
+
 
     .site-title {
       display: inline-block;
     }
 
+
     .site-title h1 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
       font-weight: normal;
+
       letter-spacing: 0.04em;
+
       color: var(--blue);
     }
+
 
     nav {
       margin-top: 35px;
+
       display: flex;
+
       gap: 30px;
+
       flex-wrap: wrap;
+
       justify-content: center;
     }
 
+
     nav a {
       color: var(--blue);
-      font-family: Georgia, "Times New Roman", serif;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 0.9rem;
+
       letter-spacing: 0.12em;
     }
 
@@ -217,7 +272,9 @@
 
     main {
       max-width: 960px;
+
       margin: 0 auto;
+
       padding: 70px 25px 100px;
 
       background-image:
@@ -243,22 +300,35 @@
         130px 130px;
     }
 
+
     .page-title {
       margin-bottom: 40px;
     }
 
+
     .page-title h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 2rem;
+
       font-weight: normal;
+
       letter-spacing: 0.08em;
+
       color: var(--blue);
     }
 
+
     .page-title p {
       margin: 3px 0 0;
+
       color: var(--blue);
+
       font-size: 0.7rem;
     }
 
@@ -267,22 +337,40 @@
 
     .filters {
       display: flex;
+
       justify-content: center;
+
       gap: 10px;
+
       flex-wrap: wrap;
+
       margin-bottom: 45px;
     }
 
+
     .filter {
-      border: 1px solid var(--line);
+      border:
+        1px solid
+        var(--line);
+
       background: transparent;
+
       color: var(--blue);
+
       padding: 7px 16px;
-      font-family: Georgia, "Times New Roman", serif;
+
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size: 0.75rem;
+
       letter-spacing: 0.08em;
+
       cursor: pointer;
     }
+
 
     .filter:hover,
     .filter.active {
@@ -294,46 +382,66 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 28px;
     }
 
+
     .work {
       margin: 0;
+
       cursor: pointer;
     }
 
-    /* 正方形の枠 */
+
+    /* ---------- square frame ---------- */
 
     .work-frame {
       width: 100%;
+
       aspect-ratio: 1 / 1;
+
       overflow: hidden;
+
       background: #e8e5db;
+
       position: relative;
     }
 
-    /* 枠の中で画像を拡大・移動 */
+
+    /* ==================================================
+       thumbnail image
+
+       画像はまず object-fit: cover で
+       正方形の枠いっぱいに配置。
+
+       その後 zoom で拡大。
+
+       x / y は JavaScriptで計算した
+       「移動可能範囲」の0〜100%を使って
+       translateする。
+       ================================================== */
 
     .work-image {
+      position: absolute;
+
       width: 100%;
       height: 100%;
 
       object-fit: cover;
 
-      object-position:
-        var(--x, 50%)
-        var(--y, 50%);
-
-      transform:
-        scale(var(--zoom, 1));
-
       display: block;
+
+      transform-origin: center center;
 
       transition:
         opacity 0.2s ease,
         filter 0.2s ease;
     }
+
 
     .work:hover .work-image {
       opacity: 0.75;
@@ -346,21 +454,27 @@
       filter: blur(18px);
     }
 
+
     .work.r18:hover .work-image {
       opacity: 0.9;
     }
 
+
     .r18-label {
       position: absolute;
+
       top: 50%;
       left: 50%;
 
-      transform: translate(-50%, -50%);
+      transform:
+        translate(-50%, -50%);
 
       z-index: 2;
 
       color: var(--bg);
-      background: rgba(36, 59, 54, 0.8);
+
+      background:
+        rgba(36, 59, 54, 0.8);
 
       padding: 6px 14px;
 
@@ -370,13 +484,16 @@
         serif;
 
       font-size: 0.9rem;
+
       letter-spacing: 0.12em;
     }
 
 
     .work figcaption {
       padding-top: 8px;
+
       color: var(--blue);
+
       font-size: 0.72rem;
     }
 
@@ -385,28 +502,39 @@
 
     .lightbox {
       position: fixed;
+
       inset: 0;
+
       z-index: 1000;
 
       display: none;
+
       align-items: center;
+
       justify-content: center;
 
-      background: rgba(36, 59, 54, 0.88);
+      background:
+        rgba(36, 59, 54, 0.88);
+
       padding: 30px;
     }
+
 
     .lightbox.show {
       display: flex;
     }
 
+
     .lightbox-content {
       position: relative;
+
       max-width: 90vw;
       max-height: 90vh;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
     }
 
@@ -415,10 +543,14 @@
 
     .lightbox-image {
       max-width: 82vw;
+
       max-height: 82vh;
+
       width: auto;
       height: auto;
+
       object-fit: contain;
+
       display: block;
     }
 
@@ -429,15 +561,19 @@
       display: none;
 
       text-align: center;
+
       color: var(--bg);
 
       max-width: 400px;
+
       padding: 35px 30px;
     }
+
 
     .r18-confirm.show {
       display: block;
     }
+
 
     .r18-confirm h3 {
       margin: 0 0 18px;
@@ -448,25 +584,38 @@
         serif;
 
       font-size: 1.6rem;
+
       font-weight: normal;
+
       letter-spacing: 0.12em;
     }
 
+
     .r18-confirm p {
       margin: 0 0 28px;
+
       font-size: 0.8rem;
+
       line-height: 2;
     }
 
+
     .r18-buttons {
       display: flex;
+
       justify-content: center;
+
       gap: 12px;
     }
 
+
     .r18-button {
-      border: 1px solid rgba(243, 240, 230, 0.7);
+      border:
+        1px solid
+        rgba(243, 240, 230, 0.7);
+
       background: transparent;
+
       color: var(--bg);
 
       padding: 8px 22px;
@@ -477,13 +626,16 @@
         serif;
 
       font-size: 0.8rem;
+
       letter-spacing: 0.08em;
 
       cursor: pointer;
     }
 
+
     .r18-button:hover {
-      background: rgba(243, 240, 230, 0.15);
+      background:
+        rgba(243, 240, 230, 0.15);
     }
 
 
@@ -491,41 +643,55 @@
 
     .close {
       position: fixed;
+
       top: 20px;
       right: 25px;
 
       border: none;
+
       background: none;
+
       color: var(--bg);
 
       font-size: 2rem;
+
       font-weight: normal;
+
       cursor: pointer;
 
       z-index: 5;
     }
 
+
     .prev,
     .next {
       position: fixed;
+
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       border: none;
+
       background: none;
+
       color: var(--bg);
 
       font-size: 2rem;
+
       cursor: pointer;
+
       padding: 20px;
 
       z-index: 5;
     }
 
+
     .prev {
       left: 10px;
     }
+
 
     .next {
       right: 10px;
@@ -536,10 +702,14 @@
 
     footer {
       max-width: 960px;
+
       margin: 0 auto;
+
       padding: 30px 25px 55px;
 
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid
+        var(--line);
 
       color: var(--blue);
 
@@ -557,41 +727,54 @@
         padding-top: 35px;
       }
 
+
       .site-title h1 {
         font-size: 2.4rem;
       }
+
 
       nav {
         gap: 18px;
       }
 
+
       main {
         padding-top: 50px;
       }
 
+
       .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
+
         gap: 15px;
       }
+
 
       .work figcaption {
         font-size: 0.68rem;
       }
 
+
       .lightbox {
         padding: 15px;
       }
 
+
       .lightbox-image {
         max-width: 90vw;
+
         max-height: 80vh;
       }
+
 
       .prev,
       .next {
         font-size: 1.5rem;
+
         padding: 10px;
       }
+
 
       .r18-confirm {
         padding: 30px 20px;
@@ -609,19 +792,33 @@
 
   <header>
 
-    <a href="index.html" class="site-title">
+    <a
+      href="index.html"
+      class="site-title"
+    >
+
       <h1>ressentiment</h1>
+
     </a>
+
 
     <nav>
 
-      <a href="illust.html">ILLUST</a>
+      <a href="illust.html">
+        ILLUST
+      </a>
 
-      <a href="novel.html">NOVEL</a>
+      <a href="novel.html">
+        NOVEL
+      </a>
 
-      <a href="blog.html">BLOG</a>
+      <a href="blog.html">
+        BLOG
+      </a>
 
-      <a href="circle.html">CIRCLE</a>
+      <a href="circle.html">
+        CIRCLE
+      </a>
 
     </nav>
 
@@ -635,12 +832,14 @@
 
       <h2>ILLUST</h2>
 
-      <p>新しい順に掲載／左上が最新</p>
+      <p>
+        新しい順に掲載／左上が最新
+      </p>
 
     </div>
 
 
-    <!-- category filter -->
+    <!-- ---------- category filter ---------- -->
 
     <div class="filters">
 
@@ -651,12 +850,14 @@
         ALL
       </button>
 
+
       <button
         class="filter"
         data-filter="goofy-max"
       >
         Goofy &amp; Max
       </button>
+
 
       <button
         class="filter"
@@ -668,7 +869,7 @@
     </div>
 
 
-    <!-- gallery -->
+    <!-- ---------- gallery ---------- -->
 
     <div
       class="gallery"
@@ -688,6 +889,7 @@
     id="lightbox"
   >
 
+
     <button
       class="close"
       id="close"
@@ -705,6 +907,7 @@
 
 
     <div class="lightbox-content">
+
 
       <!-- 通常作品 -->
 
@@ -725,11 +928,14 @@
 
         <h3>R18</h3>
 
+
         <p>
           この作品には成人向け表現が含まれます。
         </p>
 
+
         <div class="r18-buttons">
+
 
           <button
             class="r18-button"
@@ -738,12 +944,14 @@
             見る
           </button>
 
+
           <button
             class="r18-button"
             id="r18-back"
           >
             戻る
           </button>
+
 
         </div>
 
@@ -758,6 +966,7 @@
     >
       ›
     </button>
+
 
   </div>
 
@@ -779,97 +988,343 @@
       document.getElementById("gallery");
 
 
-    illustrations.forEach((item, index) => {
-
-      const figure =
-        document.createElement("figure");
-
-      figure.className = "work";
-
-      if (item.r18) {
-        figure.classList.add("r18");
-      }
-
-      figure.dataset.category =
-        item.category;
+    illustrations.forEach(
+      (item, index) => {
 
 
-      /* ---------- frame ---------- */
-
-      const frame =
-        document.createElement("div");
-
-      frame.className = "work-frame";
+        const figure =
+          document.createElement("figure");
 
 
-      /* ---------- image ---------- */
-
-      const image =
-        document.createElement("img");
-
-      image.src =
-        item.image;
-
-      image.alt =
-        item.title;
-
-      image.className =
-        "work-image";
+        figure.className =
+          "work";
 
 
-      image.style.setProperty(
-        "--zoom",
-        item.zoom
-      );
+        if (item.r18) {
 
-      image.style.setProperty(
-        "--x",
-        item.x + "%"
-      );
+          figure.classList.add("r18");
 
-      image.style.setProperty(
-        "--y",
-        item.y + "%"
-      );
+        }
 
 
-      frame.appendChild(image);
+        figure.dataset.category =
+          item.category;
 
 
-      /* ---------- R18 label ---------- */
+        /* ---------- frame ---------- */
 
-      if (item.r18) {
-
-        const r18Label =
+        const frame =
           document.createElement("div");
 
-        r18Label.className =
-          "r18-label";
 
-        r18Label.textContent =
-          "R18";
+        frame.className =
+          "work-frame";
 
-        frame.appendChild(r18Label);
+
+        /* ---------- image ---------- */
+
+        const image =
+          document.createElement("img");
+
+
+        image.src =
+          item.image;
+
+
+        image.alt =
+          item.title;
+
+
+        image.className =
+          "work-image";
+
+
+        /*
+         * zoom / x / y を
+         * CSS変数として保存
+         */
+
+        image.style.setProperty(
+          "--zoom",
+          item.zoom ?? 1
+        );
+
+
+        image.style.setProperty(
+          "--x-position",
+          item.x ?? 50
+        );
+
+
+        image.style.setProperty(
+          "--y-position",
+          item.y ?? 50
+        );
+
+
+        frame.appendChild(
+          image
+        );
+
+
+        /* ---------- R18 label ---------- */
+
+        if (item.r18) {
+
+
+          const r18Label =
+            document.createElement("div");
+
+
+          r18Label.className =
+            "r18-label";
+
+
+          r18Label.textContent =
+            "R18";
+
+
+          frame.appendChild(
+            r18Label
+          );
+
+        }
+
+
+        /* ---------- caption ---------- */
+
+        const caption =
+          document.createElement(
+            "figcaption"
+          );
+
+
+        caption.textContent =
+          item.title;
+
+
+        figure.appendChild(
+          frame
+        );
+
+
+        figure.appendChild(
+          caption
+        );
+
+
+        gallery.appendChild(
+          figure
+        );
+
+
+        /* ==================================================
+           x / y の計算
+
+           画像の実際の表示サイズを取得し、
+           枠からはみ出している部分を計算。
+
+           その「移動可能範囲」を
+           0〜100%として扱う。
+
+           画像が読み込まれてから計算する。
+           ================================================== */
+
+        function updateImagePosition() {
+
+          const frameWidth =
+            frame.clientWidth;
+
+          const frameHeight =
+            frame.clientHeight;
+
+
+          if (
+            frameWidth === 0 ||
+            frameHeight === 0
+          ) {
+
+            return;
+
+          }
+
+
+          /*
+           * object-fit: cover した場合の
+           * 元画像の表示サイズを計算
+           */
+
+          const naturalWidth =
+            image.naturalWidth;
+
+          const naturalHeight =
+            image.naturalHeight;
+
+
+          if (
+            !naturalWidth ||
+            !naturalHeight
+          ) {
+
+            return;
+
+          }
+
+
+          const coverScale =
+            Math.max(
+              frameWidth / naturalWidth,
+              frameHeight / naturalHeight
+            );
+
+
+          const baseWidth =
+            naturalWidth * coverScale;
+
+
+          const baseHeight =
+            naturalHeight * coverScale;
+
+
+          /*
+           * zoom後の画像サイズ
+           */
+
+          const zoom =
+            Number(item.zoom ?? 1);
+
+
+          const imageWidth =
+            baseWidth * zoom;
+
+
+          const imageHeight =
+            baseHeight * zoom;
+
+
+          /*
+           * 枠からはみ出している量。
+
+           * これが実際に動かせる距離。
+           */
+
+          const moveX =
+            Math.max(
+              0,
+              imageWidth - frameWidth
+            );
+
+
+          const moveY =
+            Math.max(
+              0,
+              imageHeight - frameHeight
+            );
+
+
+          /*
+           * 0〜100を移動距離に変換。
+
+           * x: 0   → 左端
+           * x: 50  → 中央
+           * x: 100 → 右端
+           */
+
+          const x =
+            Math.min(
+              100,
+              Math.max(
+                0,
+                Number(item.x ?? 50)
+              )
+            );
+
+
+          const y =
+            Math.min(
+              100,
+              Math.max(
+                0,
+                Number(item.y ?? 50)
+              )
+            );
+
+
+          /*
+           * 中央からの移動量に変換。
+
+           * 0   = -move/2
+           * 50  = 0
+           * 100 = +move/2
+           */
+
+          const offsetX =
+            (x / 100 - 0.5) * moveX;
+
+
+          const offsetY =
+            (y / 100 - 0.5) * moveY;
+
+
+          /*
+           * 画像を中央から移動
+           */
+
+          image.style.position =
+            "absolute";
+
+
+          image.style.left =
+            "50%";
+
+
+          image.style.top =
+            "50%";
+
+
+          image.style.transform =
+            "translate(-50%, -50%) " +
+            "translate(" +
+            offsetX +
+            "px, " +
+            offsetY +
+            "px) " +
+            "scale(" +
+            zoom +
+            ")";
+
+        }
+
+
+        /*
+         * 画像読み込み後に計算
+         */
+
+        if (image.complete) {
+
+          updateImagePosition();
+
+        } else {
+
+          image.addEventListener(
+            "load",
+            updateImagePosition
+          );
+
+        }
+
+
+        /*
+         * 画面サイズ変更時にも再計算
+         */
+
+        window.addEventListener(
+          "resize",
+          updateImagePosition
+        );
 
       }
-
-
-      /* ---------- caption ---------- */
-
-      const caption =
-        document.createElement("figcaption");
-
-      caption.textContent =
-        item.title;
-
-
-      figure.appendChild(frame);
-
-      figure.appendChild(caption);
-
-      gallery.appendChild(figure);
-
-    });
+    );
 
 
     /* ==================================================
@@ -878,142 +1333,195 @@
 
     const works =
       Array.from(
-        document.querySelectorAll(".work")
+        document.querySelectorAll(
+          ".work"
+        )
       );
 
+
     const filters =
-      document.querySelectorAll(".filter");
+      document.querySelectorAll(
+        ".filter"
+      );
+
 
     const lightbox =
-      document.getElementById("lightbox");
+      document.getElementById(
+        "lightbox"
+      );
+
 
     const lightboxImage =
-      document.getElementById("lightbox-image");
+      document.getElementById(
+        "lightbox-image"
+      );
+
 
     const r18Confirm =
-      document.getElementById("r18-confirm");
+      document.getElementById(
+        "r18-confirm"
+      );
+
 
     const r18View =
-      document.getElementById("r18-view");
+      document.getElementById(
+        "r18-view"
+      );
+
 
     const r18Back =
-      document.getElementById("r18-back");
+      document.getElementById(
+        "r18-back"
+      );
+
 
     const close =
-      document.getElementById("close");
+      document.getElementById(
+        "close"
+      );
+
 
     const prev =
-      document.getElementById("prev");
+      document.getElementById(
+        "prev"
+      );
+
 
     const next =
-      document.getElementById("next");
+      document.getElementById(
+        "next"
+      );
 
 
-    let visibleWorks = works;
+    let visibleWorks =
+      works;
 
-    let currentIndex = 0;
+
+    let currentIndex =
+      0;
 
 
     /* ==================================================
        category filter
        ================================================== */
 
-    filters.forEach(filter => {
+    filters.forEach(
+      filter => {
 
-      filter.addEventListener(
-        "click",
-        () => {
+        filter.addEventListener(
+          "click",
+          () => {
 
-          filters.forEach(item => {
 
-            item.classList.remove(
+            filters.forEach(
+              item => {
+
+                item.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+            filter.classList.add(
               "active"
             );
 
-          });
+
+            const category =
+              filter.dataset.filter;
 
 
-          filter.classList.add(
-            "active"
-          );
+            works.forEach(
+              work => {
+
+                if (
+                  category === "all" ||
+                  work.dataset.category ===
+                    category
+                ) {
+
+                  work.style.display =
+                    "";
+
+                } else {
+
+                  work.style.display =
+                    "none";
+
+                }
+
+              }
+            );
 
 
-          const category =
-            filter.dataset.filter;
+            visibleWorks =
+              works.filter(
+                work => {
 
+                  return (
+                    work.style.display !==
+                    "none"
+                  );
 
-          works.forEach(work => {
-
-            if (
-              category === "all" ||
-              work.dataset.category === category
-            ) {
-
-              work.style.display = "";
-
-            } else {
-
-              work.style.display = "none";
-
-            }
-
-          });
-
-
-          visibleWorks =
-            works.filter(work => {
-
-              return (
-                work.style.display !== "none"
+                }
               );
 
-            });
+          }
+        );
 
-        }
-      );
-
-    });
+      }
+    );
 
 
     /* ==================================================
        open lightbox
        ================================================== */
 
-    works.forEach(work => {
+    works.forEach(
+      work => {
 
-      work.addEventListener(
-        "click",
-        () => {
+        work.addEventListener(
+          "click",
+          () => {
 
-          visibleWorks =
-            works.filter(item => {
 
-              return (
-                item.style.display !== "none"
+            visibleWorks =
+              works.filter(
+                item => {
+
+                  return (
+                    item.style.display !==
+                    "none"
+                  );
+
+                }
               );
 
-            });
+
+            currentIndex =
+              visibleWorks.indexOf(
+                work
+              );
 
 
-          currentIndex =
-            visibleWorks.indexOf(work);
+            showCurrentWork();
 
 
-          showCurrentWork();
+            lightbox.classList.add(
+              "show"
+            );
 
 
-          lightbox.classList.add(
-            "show"
-          );
+            document.body.style.overflow =
+              "hidden";
 
+          }
+        );
 
-          document.body.style.overflow =
-            "hidden";
-
-        }
-      );
-
-    });
+      }
+    );
 
 
     /* ==================================================
@@ -1027,42 +1535,56 @@
 
 
       if (!work) {
+
         return;
+
       }
 
 
       const image =
-        work.querySelector(".work-image");
+        work.querySelector(
+          ".work-image"
+        );
 
 
       const isR18 =
-        work.classList.contains("r18");
+        work.classList.contains(
+          "r18"
+        );
 
 
       if (isR18) {
 
-        /* R18は画像を隠して確認画面を表示 */
+
+        /*
+         * R18作品に到達するたび、
+         * 必ず確認画面を表示。
+         */
 
         lightboxImage.style.display =
           "none";
+
 
         r18Confirm.classList.add(
           "show"
         );
 
+
       } else {
 
-        /* 通常作品 */
 
         r18Confirm.classList.remove(
           "show"
         );
 
+
         lightboxImage.style.display =
           "block";
 
+
         lightboxImage.src =
           image.src;
+
 
         lightboxImage.alt =
           image.alt;
@@ -1080,21 +1602,27 @@
       "click",
       () => {
 
+
         const work =
           visibleWorks[currentIndex];
 
 
         if (!work) {
+
           return;
+
         }
 
 
         const image =
-          work.querySelector(".work-image");
+          work.querySelector(
+            ".work-image"
+          );
 
 
         lightboxImage.src =
           image.src;
+
 
         lightboxImage.alt =
           image.alt;
@@ -1103,6 +1631,7 @@
         r18Confirm.classList.remove(
           "show"
         );
+
 
         lightboxImage.style.display =
           "block";
@@ -1139,6 +1668,7 @@
       "click",
       event => {
 
+
         if (
           event.target === lightbox
         ) {
@@ -1157,15 +1687,19 @@
         "show"
       );
 
+
       r18Confirm.classList.remove(
         "show"
       );
 
+
       lightboxImage.style.display =
         "block";
 
+
       lightboxImage.src =
         "";
+
 
       document.body.style.overflow =
         "";
@@ -1180,6 +1714,7 @@
     prev.addEventListener(
       "click",
       event => {
+
 
         event.stopPropagation();
 
@@ -1216,6 +1751,7 @@
       "click",
       event => {
 
+
         event.stopPropagation();
 
 
@@ -1249,6 +1785,7 @@
     document.addEventListener(
       "keydown",
       event => {
+
 
         if (
           !lightbox.classList.contains(
