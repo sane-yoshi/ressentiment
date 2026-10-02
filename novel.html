@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
   <!-- ==================================================
        小説データ
        ★ 小説を追加するときは、ここだけ編集 ★
-
        新しい作品を一番上に追加してください。
        上にある作品ほど新しい作品として表示されます。
-
        category：
        "goofy-max" または "other"
-
        file：
        本文ファイルの場所
        例）novels/novel01.txt
-
        paging：
        true  = ページ送りあり
        false = 全文を1ページで表示
-
        ================================================== -->
-
   <script>
-
     const novels = [
-
       /* ---------- 作品01 ---------- */
-
       {
         title: "ポップコーンはソルト味",
         category: "goofy-max",
@@ -37,8 +26,6 @@
         file: "novels/novel04.txt",
         paging: false
       },
-
-
       {
         title: "月光",
         category: "other",
@@ -47,7 +34,6 @@
         file: "novels/novel03.txt",
         paging: true
       },
-
       {
         title: "存在証明",
         category: "other",
@@ -56,7 +42,6 @@
         file: "novels/novel02.txt",
         paging: true
       },
-
       {
         title: "夜明け",
         category: "other",
@@ -65,12 +50,8 @@
         file: "novels/novel01.txt",
         paging: false
       }
-
-
       /* ---------- 小説を追加する場合 ----------
-
       上の } の後ろに「,」を付けて、
-
       {
         title: "新しい小説",
         category: "goofy-max",
@@ -79,32 +60,21 @@
         file: "novels/novel02.txt",
         paging: false
       },
-
       のように追加してください。
-
       paging:
       true  → ページ送りあり
       false → 全文表示
-
       ------------------------------------------ */
-
     ];
-
   </script>
-
-
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+name=“viewport”
+content=“width=device-width, initial-scale=1.0”
 
   <title>NOVEL | ressentiment</title>
-
-
   <style>
-
     :root {
       --bg: #f3f0e6;
       --mint: #a8cdbd;
@@ -112,335 +82,211 @@
       --blue: #456A72;
       --line: #b8c8bd;
     }
-
-
     * {
       box-sizing: border-box;
     }
-
-
     body {
       margin: 0;
-
       background: var(--bg);
-
       color: var(--green);
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Hiragino Kaku Gothic ProN",
         "Yu Gothic",
         sans-serif;
-
       line-height: 1.8;
     }
-
-
     a {
       color: inherit;
       text-decoration: none;
     }
-
-
     a:hover {
       opacity: 0.6;
     }
-
-
     /* ---------- header ---------- */
-
-
     header {
       background-color: var(--mint);
-
       background-image:
         radial-gradient(
           circle at 15% 25%,
           rgba(243, 240, 230, 0.45) 0 2px,
           transparent 3px
         ),
-
         radial-gradient(
           circle at 80% 70%,
           rgba(243, 240, 230, 0.35) 0 3px,
           transparent 4px
         ),
-
         radial-gradient(
           circle at 65% 20%,
           rgba(243, 240, 230, 0.3) 0 1px,
           transparent 2px
         );
-
       background-size:
         180px 180px,
         240px 240px,
         130px 130px;
-
       padding: 65px 25px 45px;
-
       text-align: center;
     }
-
-
     .site-title {
       display: inline-block;
     }
-
-
     .site-title h1 {
       margin: 0;
-
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size:
         clamp(3rem, 8vw, 5.5rem);
-
       font-weight: normal;
-
       letter-spacing: 0.04em;
-
       color: #456A72;
     }
-
-
     nav {
       margin-top: 35px;
-
       display: flex;
-
       gap: 30px;
-
       flex-wrap: wrap;
-
       justify-content: center;
     }
-
-
     nav a {
       color: #456A72;
-
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size: 0.9rem;
-
       letter-spacing: 0.12em;
     }
-
-
     /* ---------- main ---------- */
-
-
     main {
       max-width: 960px;
-
       margin: 0 auto;
-
       padding: 70px 25px 100px;
-
       background-image:
         radial-gradient(
           circle at 12% 18%,
           rgba(168, 205, 189, 0.45) 0 2px,
           transparent 3px
         ),
-
         radial-gradient(
           circle at 86% 72%,
           rgba(168, 205, 189, 0.35) 0 3px,
           transparent 4px
         ),
-
         radial-gradient(
           circle at 65% 35%,
           rgba(168, 205, 189, 0.3) 0 1px,
           transparent 2px
         );
-
       background-size:
         180px 180px,
         240px 240px,
         130px 130px;
     }
-
-
     .page-title {
       margin-bottom: 40px;
     }
-
-
     .page-title h2 {
       margin: 0;
-
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size: 2rem;
-
       font-weight: normal;
-
       letter-spacing: 0.08em;
-
       color: var(--blue);
     }
-
-
     .page-title p {
       margin: 3px 0 0;
-
       color: var(--blue);
-
       font-size: 0.7rem;
     }
-
-
     /* ---------- category ---------- */
-
-
     .filters {
       display: flex;
-
       justify-content: center;
-
       gap: 10px;
-
       flex-wrap: wrap;
-
       margin-bottom: 45px;
     }
-
-
     .filter {
       border:
         1px solid var(--line);
-
       background: transparent;
-
       color: var(--blue);
-
       padding: 7px 16px;
-
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size: 0.75rem;
-
       letter-spacing: 0.08em;
-
       cursor: pointer;
     }
-
-
     .filter:hover,
     .filter.active {
       background: var(--mint);
     }
-
-
     /* ---------- novel list ---------- */
-
-
     .novel-list {
       max-width: 760px;
-
       margin: 0 auto;
     }
-
-
     .novel {
       display: block;
-
       padding:
         22px 5px 25px;
-
       border-bottom:
         1px dotted var(--line);
-
       cursor: pointer;
     }
-
-
     .novel:first-child {
       border-top:
         1px dotted var(--line);
     }
-
-
     .novel:hover {
       opacity: 0.65;
     }
-
-
     .novel-date {
       color: var(--blue);
-
       font-size: 0.72rem;
-
       letter-spacing: 0.08em;
-
       margin-bottom: 3px;
     }
-
-
     .novel-title {
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size: 1.25rem;
-
       color: var(--green);
-
       margin-bottom: 5px;
     }
-
-
     .novel-info {
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
       margin-bottom: 7px;
     }
-
-
     .novel-category {
       display: inline-block;
-
       color: var(--blue);
-
       font-family:
         Georgia,
         "Times New Roman",
         serif;
-
       font-size: 0.68rem;
-
       letter-spacing: 0.08em;
     }
-
-
     .novel-description {
       color: var(--green);
-
       font-size: 0.78rem;
-
       opacity: 0.8;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -448,508 +294,367 @@
         "Yu Gothic",
         sans-serif;
     }
-
-
+    /* ---------- character count ---------- */
+    .novel-count {
+      margin-left: auto;
+      color: var(--blue);
+      font-size: 0.68rem;
+      opacity: 0.7;
+      white-space: nowrap;
+    }
     /* ---------- gender symbol ---------- */
-
     /*
       ♂・♀だけ文字の位置や大きさが
       周囲の文字から浮かないように調整。
       小説データには普通に ♂ / ♀ と入力するだけでOK。
     */
-
     .gender-symbol {
       display: inline-block;
-
       font-family:
         Arial,
         sans-serif;
-
       font-size: 0.9em;
-
       line-height: 1;
-
       vertical-align: -0.04em;
-
       margin: 0 0.03em;
     }
-
-
     /* ---------- footer ---------- */
-
-
     footer {
       max-width: 960px;
-
       margin: 0 auto;
-
       padding:
         30px 25px 55px;
-
       border-top:
         1px solid var(--line);
-
       color: var(--blue);
-
       font-size: 0.7rem;
-
       letter-spacing: 0.12em;
     }
-
-
     /* ---------- mobile ---------- */
-
-
     @media (max-width: 600px) {
-
       header {
         padding-top: 35px;
       }
-
-
       .site-title h1 {
         font-size: 2.4rem;
       }
-
-
       nav {
         gap: 18px;
       }
-
-
       main {
         padding-top: 50px;
-
         padding-bottom: 60px;
       }
-
-
       .novel {
         padding:
           18px 2px 21px;
       }
-
-
       .novel-title {
         font-size: 1.1rem;
       }
-
-
       .novel-description {
         font-size: 0.75rem;
       }
-
     }
-
   </style>
-
 </head>
-
-
 <body>
-
-
   <header>
-
-    <a
-      href="index.html"
-      class="site-title"
-    >
-
-      <h1>ressentiment</h1>
-
-    </a>
-
-
-    <nav>
-
-      <a href="illust.html">
-        ILLUST
-      </a>
-
-      <a href="novel.html">
-        NOVEL
-      </a>
-
-      <a href="blog.html">
-        BLOG
-      </a>
-
-      <a href="circle.html">
-        CIRCLE
-      </a>
-
-    </nav>
-
+<a
+  href="index.html"
+  class="site-title"
+>
+  <h1>ressentiment</h1>
+</a>
+<nav>
+  <a href="illust.html">
+    ILLUST
+  </a>
+  <a href="novel.html">
+    NOVEL
+  </a>
+  <a href="blog.html">
+    BLOG
+  </a>
+  <a href="circle.html">
+    CIRCLE
+  </a>
+</nav>
   </header>
-
-
   <main>
-
-
-    <div class="page-title">
-
-      <h2>NOVEL</h2>
-
-      <p>新しい順に掲載</p>
-
-    </div>
-
-
-    <!-- ---------- category ---------- -->
-
-
-    <div class="filters">
-
-      <button
-        class="filter active"
-        data-filter="all"
-      >
-        ALL
-      </button>
-
-
-      <button
-        class="filter"
-        data-filter="goofy-max"
-      >
-        Goofy &amp; Max
-      </button>
-
-
-      <button
-        class="filter"
-        data-filter="other"
-      >
-        Other
-      </button>
-
-    </div>
-
-
-    <!-- ---------- novel list ---------- -->
-
-
-    <div
-      class="novel-list"
-      id="novel-list"
-    ></div>
-
-
+<div class="page-title">
+  <h2>NOVEL</h2>
+  <p>新しい順に掲載</p>
+</div>
+<!-- ---------- category ---------- -->
+<div class="filters">
+  <button
+    class="filter active"
+    data-filter="all"
+  >
+    ALL
+  </button>
+  <button
+    class="filter"
+    data-filter="goofy-max"
+  >
+    Goofy &amp; Max
+  </button>
+  <button
+    class="filter"
+    data-filter="other"
+  >
+    Other
+  </button>
+</div>
+<!-- ---------- novel list ---------- -->
+<div
+  class="novel-list"
+  id="novel-list"
+></div>
   </main>
-
-
   <footer>
-
-    © saneyoshi / ressentiment
-
+© saneyoshi / ressentiment
   </footer>
-
-
   <script>
-
-
+    /* ---------- 文字数取得 ---------- */
+    async function getCharacterCount(file) {
+      try {
+        const response =
+          await fetch(file);
+        if (!response.ok) {
+          throw new Error(
+            "File not found"
+          );
+        }
+        const text =
+          await response.text();
+        /*
+          改行とページ区切りだけ除外。
+          全角スペースなど本文中の空白は
+          文字数としてカウントする。
+        */
+        return text
+          .replace(/===PAGE===/g, "")
+          .replace(/\r?\n/g, "")
+          .length;
+      } catch (error) {
+        console.error(
+          "文字数を取得できませんでした:",
+          file,
+          error
+        );
+        return null;
+      }
+    }
     /* ---------- 小説一覧を作成 ---------- */
-
-
     const novelList =
       document.getElementById(
         "novel-list"
       );
-
-
     /*
       説明文の中にある ♂ / ♀ を
       自動的に専用の span に入れる。
-
       小説データ側では、
-
       description: "FE/リュ♂ディア/R18"
-
       のように普通に書けばOK。
     */
-
     function createDescription(
       text
     ) {
-
       const description =
         document.createElement("div");
-
       description.className =
         "novel-description";
-
-
       const parts =
         text.split(
           /([♂♀])/g
         );
-
-
       parts.forEach(part => {
-
         if (
           part === "♂" ||
           part === "♀"
         ) {
-
           const symbol =
             document.createElement("span");
-
           symbol.className =
             "gender-symbol";
-
           symbol.textContent =
             part;
-
           description.appendChild(
             symbol
           );
-
         } else {
-
           description.appendChild(
             document.createTextNode(
               part
             )
           );
-
         }
-
       });
-
-
       return description;
-
     }
-
-
     novels.forEach(novel => {
-
-
       const article =
         document.createElement("article");
-
       article.className =
         "novel";
-
       article.dataset.category =
         novel.category;
-
-
       const date =
         document.createElement("div");
-
       date.className =
         "novel-date";
-
       date.textContent =
         novel.date;
-
-
       const title =
         document.createElement("div");
-
       title.className =
         "novel-title";
-
       title.textContent =
         novel.title;
-
-
       const info =
         document.createElement("div");
-
       info.className =
         "novel-info";
-
-
       const category =
         document.createElement("span");
-
       category.className =
         "novel-category";
-
-
       if (
         novel.category === "goofy-max"
       ) {
-
         category.textContent =
           "Goofy & Max";
-
       } else {
-
         category.textContent =
           "Other";
-
       }
-
-
       info.appendChild(
         category
       );
-
-
       /*
         説明文を作成
       */
-
       const description =
         createDescription(
           novel.description
         );
-
-
       article.appendChild(
         date
       );
-
       article.appendChild(
         title
       );
-
       article.appendChild(
         info
       );
-
       article.appendChild(
         description
       );
-
-
+      /*
+        文字数を表示
+      */
+      const count =
+        document.createElement("span");
+      count.className =
+        "novel-count";
+      count.textContent =
+        "文字数を取得中…";
+      info.appendChild(
+        count
+      );
+      getCharacterCount(
+        novel.file
+      ).then(length => {
+        if (length !== null) {
+          count.textContent =
+            length.toLocaleString() +
+            "字";
+        } else {
+          count.textContent =
+            "";
+        }
+      });
       /* ---------- 本文ページへ ---------- */
-
-
       article.addEventListener(
         "click",
         () => {
-
           const params =
             new URLSearchParams();
-
-
           params.set(
             "file",
             novel.file
           );
-
-
           params.set(
             "title",
             novel.title
           );
-
-
           params.set(
             "date",
             novel.date
           );
-
-
           params.set(
             "category",
             novel.category
           );
-
-
           params.set(
             "paging",
             novel.paging
           );
-
-
           window.location.href =
             "novel-viewer.html?" +
             params.toString();
-
         }
       );
-
-
       novelList.appendChild(
         article
       );
-
     });
-
-
     /* ---------- category filter ---------- */
-
-
     const filters =
       document.querySelectorAll(
         ".filter"
       );
-
-
     const novelsOnPage =
       Array.from(
         document.querySelectorAll(
           ".novel"
         )
       );
-
-
     filters.forEach(filter => {
-
-
       filter.addEventListener(
         "click",
         () => {
-
-
           filters.forEach(item => {
-
             item.classList.remove(
               "active"
             );
-
           });
-
-
           filter.classList.add(
             "active"
           );
-
-
           const selectedCategory =
             filter.dataset.filter;
-
-
           novelsOnPage.forEach(
             novel => {
-
-
               if (
                 selectedCategory ===
                   "all" ||
-
                 novel.dataset.category ===
                   selectedCategory
               ) {
-
                 novel.style.display =
                   "";
-
               } else {
-
                 novel.style.display =
                   "none";
-
               }
-
             }
           );
-
         }
       );
-
     });
-
   </script>
-
-
 </body>
-
 </html>
